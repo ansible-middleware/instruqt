@@ -1,16 +1,17 @@
 slug: a4mw-eap-sso
 id: b0efd70uujxc
 title: Deploy Red Hat Single Sign-On with Ansible for Middleware collections
-teaser: Learn how to automatate the deployment of Red Hat Single Sign-On using Ansible
+teaser: Learn how to automate the deployment of Red Hat Single Sign-On using Ansible
   Automation Platform, and the certified collections provided by a4mw (Ansible for
   Middleware).
 description: |-
   # Introduction to Ansible automation controller
 
-  Welcome to our interactive lab on Ansible automation controller, the web-based UI interface for Red Hat Ansible Automation Platform.
+  Welcome to our interactive lab on Red Hat Single Sign-On with Ansible for Middleware; during the laboratory, we will be using Ansible automation controller, 
+  the web-based UI interface for Red Hat Ansible Automation Platform.
 
-  In this lab, we will find a web application deployed on Jboss EAP and served via Jboss Core Services: after learning how Ansible and the Middleware Automation collections 
-  can help to setup such environment, we will install and deploy an additional highly available authentication service, Red Hat Single Sign-On, using an additional certified
+  In this lab, we will find a web application deployed on Jboss EAP and served via Jboss Core Services: after learning how Ansible and the Middleware Automation collections
+  can help to setup such an environment, we will install and deploy an additional highly available authentication service, Red Hat Single Sign-On, using an additional certified
   collection, and we will update the deployment of the web application with a new version requiring an external authentication mechanism.
 
   ![scenario](https://raw.githubusercontent.com/ansible-middleware/instruqt/main/assets/icons/a4mw.png)
@@ -19,20 +20,18 @@ description: |-
 
   We will create an inventory to manage our servers, import our playbooks through the Projects, create Job Templates to run the playbooks and finally, update the web application.
 
-  ![controller_dashboard](https://raw.githubusercontent.com/craig-br/instruqt-tracks/devel/assets/controller/controller_dashboard.png)
-
   This lab covers the following topics for automation controller and middleware automation collections:
 
   * Exploring the dashboard and web-UI interface
   * Exploring how to make use of collections for automating complex tasks
   * Deploying a stack of services to target instances using job templates
-    * Jboss Core Services
-    * Jboss Enterprise Application Platform
+    * Red Hat Jboss Core Services
+    * Red Hat Enterprise Application Platform
   * Making changes to collection configuration to reiterate deployments
     * Red Hat Single Sign-On
-    * Jboss Enterprise Application Platform
+    * Red Hat Enterprise Application Platform
 
-  You can find more information about Ansible at [Ansible.com](https://www.ansible.com/) and about A4MW at [ansiblemiddleware.com](https://ansiblemiddleware.com/)
+  You can find more information about Ansible at [Ansible.com](https://www.ansible.com/) and about A4MW at [ansiblemiddleware.com](https://ansiblemiddleware.com/).
 
   [**Try Ansible Automation Platform today!**](https://red.ht/try_ansible)
 icon: https://www.ansible.com/hubfs/Logo-Red_Hat-Ansible-A-Reverse-SVG.svg
@@ -55,4 +54,4 @@ lab_config:
   overlay: false
   width: 33
   position: right
-checksum: "5726135513268641019"
+checksum: "16139861509750223644"
