@@ -10,16 +10,11 @@ virtualmachines:
   machine_type: e2-small
   allow_external_ingress:
   - https
-  - high-ports
 - name: sso1
   image: red-hat-mbu/ansible
   shell: /bin/su - rhel -s /bin/bash
   machine_type: e2-small
-  allow_external_ingress:
-  - high-ports
 - name: sso2
   image: red-hat-mbu/ansible
   shell: /bin/su - rhel -s /bin/bash
   machine_type: e2-small
-  allow_external_ingress:
-  - high-ports

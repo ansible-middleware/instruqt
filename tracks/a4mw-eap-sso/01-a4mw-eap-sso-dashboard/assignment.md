@@ -18,7 +18,7 @@ notes:
   contents: |-
     # Automation controller Projects
 
-    ![projects-list.png](../assets/projects-list.png)
+    ![projects-list-all.png](../assets/projects-list-all.png)
 
     The Dashboard view begins with a summary of your hosts, inventories, and projects. Each of these is linked to the corresponding objects for easy access.
 - type: text
@@ -29,13 +29,6 @@ notes:
 
     Access the Jobs view by clicking Jobs from the left navigation bar. This view shows all the jobs that have ran, including projects, templates, management jobs, SCM updates, playbook runs, etc.
 - type: text
-  contents: |-
-    # Automation controller Inventories view
-
-    ![inventories-home-with-examples.png](../assets/inventories-home-with-examples.png)
-
-    Access the Inventory view by clicking Inventories from the left navigation bar. This view shows all the inventories that are configured.
-    - type: text
   contents: |-
     # Automation controller Templates view
 
