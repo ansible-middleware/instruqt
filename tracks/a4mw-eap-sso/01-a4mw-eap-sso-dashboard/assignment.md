@@ -9,16 +9,16 @@ notes:
   contents: |-
     # Welcome to Ansible automation controller
 
-    Welcome to our interactive lab on Ansible automation controller, the web-based UI interface for **Red Hat Ansible Automation Platform**.
+    Welcome to our interactive lab: this first part will be on Ansible automation controller, the web-based UI interface for **Red Hat Ansible Automation Platform**.
 
-    In this lab, we will demonstrate how easy it is to use automation controller (formerly Ansible Tower) by running some of the playbooks from the "*Writing your first playbook*" lab. No playbook development experience required, although it will help if you know the basics.
+    In this lab, we will demonstrate how easy it is to use automation controller and the Middleware Automation collections to setup complex environments.
 
-    We will explore the web-UI interface, create an **Inventory** to manage our servers, import our playbooks through the **Projects**, add **Job Templates** to run the playbooks and finally, create a **Workflow** linking a few of those playbooks through success or failure conditions.
+    Let's explore the web-UI interface, in order to get comfortable with what is already configured in.
 - type: text
   contents: |-
-    # Automation controller Dashboard
+    # Automation controller Projects
 
-    ![ug-dashboard-topsummary.png](../assets/ug-dashboard-topsummary.png)
+    ![projects-list.png](../assets/projects-list.png)
 
     The Dashboard view begins with a summary of your hosts, inventories, and projects. Each of these is linked to the corresponding objects for easy access.
 - type: text
@@ -30,11 +30,18 @@ notes:
     Access the Jobs view by clicking Jobs from the left navigation bar. This view shows all the jobs that have ran, including projects, templates, management jobs, SCM updates, playbook runs, etc.
 - type: text
   contents: |-
-    # Automation controller Schedules view
+    # Automation controller Inventories view
 
-    ![ug-dashboard-schedule-view.png](../assets/ug-dashboard-schedule-view.png)
+    ![inventories-home-with-examples.png](../assets/inventories-home-with-examples.png)
 
-    Access the Schedules view by clicking Schedules from the left navigation bar. This view shows all the scheduled jobs that are configured.
+    Access the Inventory view by clicking Inventories from the left navigation bar. This view shows all the inventories that are configured.
+    - type: text
+  contents: |-
+    # Automation controller Templates view
+
+    ![job-templates-home-with-example-job-template.png](../assets/job-templates-home-with-example-job-template.png)
+
+    Access the Templates view by clicking Templates from the left navigation bar. This view shows all the templates that are configured.
 tabs:
 - title: Automation controller
   type: service
@@ -78,7 +85,7 @@ You will find the following buttons:
 
 An **Inventory** is a collection of hosts against which playbooks may be launched, the same as an Ansible inventory file you might know from working with Ansible on the command line.
 
-Click on the **Inventories** button in the Dashboard or the link in the sidebar menu and explore the **Demo inventory** that comes pre-loaded. You will see all the fields available to use when creating one.  Don't forget to look at the tabs!
+Click on the **Inventories** button in the Dashboard or the link in the sidebar menu and explore the **eap-sso** inventory that comes pre-loaded. Don't forget to look at the tabs!
 
 
 ☑️ Task 3 - Explore the projects section
@@ -86,7 +93,7 @@ Click on the **Inventories** button in the Dashboard or the link in the sidebar 
 
 **Projects** are logical groups of Ansible playbooks in automation controller. These playbooks usually reside in a source code version control system like Git (and platforms as Github or Gitlab). With **Projects** we can reference a repository or directory with one or several playbooks, that we will later use.
 
-Click on the **Projects** button in the Dashboard or the link in the sidebar menu and explore the **Demo project** that comes pre-loaded. You will see all the fields available to use when creating one. Don't forget to look at the tabs!
+Click on the **Projects** button in the Dashboard or the link in the sidebar menu and explore the **eap-sso-deploy** project that comes pre-loaded. Don't forget to look at the tabs!
 
 
 ✅ Next Challenge

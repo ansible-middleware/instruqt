@@ -80,6 +80,6 @@ export CONTROLLER_VERIFY_SSL=false
 su - $USER -c '/bin/ansible-galaxy collection install awx.awx'
 
 # Get playbook from repo
-/usr/bin/curl https://raw.githubusercontent.com/leogallego/instruqt-lifecycle-scripts/main/controller-101-setup-playbook.yml -o /tmp/setup-scripts/getting-started-controller/getting-started-controller-setup.yml
+/usr/bin/curl https://raw.githubusercontent.com/ansible-middleware/instruqt/main/scripts/a4mw-eap-sso/controller-setup-playbook.yml -o /tmp/setup-scripts/controller-setup.yml
 # Use playbook to setup environment
-/bin/ansible-playbook /tmp/setup-scripts/getting-started-controller/getting-started-controller-setup.yml --tags setup-env
+/bin/ansible-playbook /tmp/setup-scripts/controller-setup.yml --tags setup-env

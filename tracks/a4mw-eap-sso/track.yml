@@ -34,7 +34,7 @@ description: |-
   You can find more information about Ansible at [Ansible.com](https://www.ansible.com/) and about A4MW at [ansiblemiddleware.com](https://ansiblemiddleware.com/).
 
   [**Try Ansible Automation Platform today!**](https://red.ht/try_ansible)
-icon: https://www.ansible.com/hubfs/Logo-Red_Hat-Ansible-A-Reverse-SVG.svg
+icon: https://avatars.githubusercontent.com/u/63845529?s=280&v=4
 level: intermediate
 tags:
 - ansible
@@ -55,4 +55,4 @@ lab_config:
   overlay: false
   width: 33
   position: right
-checksum: "14097130077976235068"
+checksum: "13014813841402038364"
