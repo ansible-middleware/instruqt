@@ -51,11 +51,7 @@ timelimit: 600
 ===
 #### Estimated time to complete: *3 minutes*<p>
 
-Welcome to the **Introduction to automation controller**.
-
 Automation controller, formerly known as Ansible Tower, allows users of Red Hat Ansible Automation Platform to define, operate, scale, and delegate automation across their enterprise through a web-based UI or API.
-
-In the following challenges we will build upon the work from **Writing your first playbook** and show you how to run your Ansible playbooks through the web-UI instead of `ansible-navigator` and the command line.
 
 The screen on the left shows the login screen. You can log in with the following credentials and then continue on to the tasks:
 
@@ -65,7 +61,7 @@ The screen on the left shows the login screen. You can log in with the following
 ☑️ Task 1 - Explore the Dashboard
 ===
 
-Explore the Dashboard view.  Currently the Dashboard wont show much information due to the lack of playbooks and hosts, but you will be able to visit again once you finished the lab and notice the difference.
+Explore the Dashboard view.  Currently the Dashboard wont show much information since it has just been deployed, but you will be able to visit again once you finished the lab and notice the difference.
 
 You will find the following buttons:
 
@@ -76,14 +72,11 @@ You will find the following buttons:
 * Projects
 * Projects sync fail.
 
-If you click any of them it will take you to the corresponding section. We recommend you take a peek at the following sections:
 
 ☑️ Task 2 - Explore the inventories section
 ===
 
 An **Inventory** is a collection of hosts against which playbooks may be launched, the same as an Ansible inventory file you might know from working with Ansible on the command line.
-
-**Inventories** in automation controller have several advantages over file based ones, you get all the functionality from the latter ones, with added features and better reusability.
 
 Click on the **Inventories** button in the Dashboard or the link in the sidebar menu and explore the **Demo inventory** that comes pre-loaded. You will see all the fields available to use when creating one.  Don't forget to look at the tabs!
 
