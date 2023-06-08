@@ -7,7 +7,7 @@ teaser: Learn how to automate the deployment of Red Hat Single Sign-On using Ans
 description: |-
   # Introduction to Ansible automation controller
 
-  Welcome to our interactive lab on Red Hat Single Sign-On with Ansible for Middleware; during the laboratory, we will be using Ansible automation controller, 
+  Welcome to our interactive lab on Red Hat Single Sign-On with Ansible for Middleware; during the laboratory, we will be using Ansible automation controller,
   the web-based UI interface for Red Hat Ansible Automation Platform.
 
   In this lab, we will find a web application deployed on Jboss EAP and served via Jboss Core Services: after learning how Ansible and the Middleware Automation collections
@@ -46,12 +46,13 @@ tags:
 owner: redhat
 developers:
 - ggraziol@redhat.com
+- ablock@redhat.com
 maintenance: true
 show_timer: true
 skipping_enabled: true
-timelimit: 7200
+timelimit: 5400
 lab_config:
   overlay: false
   width: 33
   position: right
-checksum: "16139861509750223644"
+checksum: "3715337803862569372"

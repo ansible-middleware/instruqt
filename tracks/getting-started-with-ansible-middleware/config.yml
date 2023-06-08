@@ -1,0 +1,8 @@
+version: "3"
+virtualmachines:
+- name: getting-started-demo
+  image: rhel-cloud/rhel-8
+  machine_type: n1-standard-1
+secrets:
+- name: ADMIN_CONTROLLER_USERNAME
+- name: ADMIN_CONTROLLER_PASSWORD
