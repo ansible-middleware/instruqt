@@ -135,6 +135,7 @@
       awx.awx.job_template:
         name: 'Demo Job Template'
         state: absent
+        organization: Default
       tags:
         - setup-env
 
@@ -142,6 +143,7 @@
       awx.awx.inventory:
         name: 'Demo Inventory'
         state: absent
+        organization: Default
       tags:
         - setup-env
 
@@ -149,6 +151,7 @@
       awx.awx.project:
         name: 'Demo Project'
         state: absent
+        organization: Default
       tags:
         - setup-env
 
