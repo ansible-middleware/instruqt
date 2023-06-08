@@ -5,15 +5,15 @@ description: Getting up to speed with Ansible Middleware is easy and only requir
   a few steps. This tutorial demonstrates and guides you through the process of preparing
   a local machine with the necessary tooling and then deploying an instance of Wildfly
   using the Wildfly collection provided by Ansible Middleware.
-icon: ""
+icon: https://www.ansible.com/hubfs/Logo-Red_Hat-Ansible-A-Reverse-SVG.svg
 tags:
 - ansible
-- ' wildfly'
-- ' middleware'
-- ' configuration'
+- wildfly
+- middleware
+- configuration
 owner: redhat
 developers:
-- null
+- hcheruku@redhat.com
 lab_config:
   overlay: false
   width: 33
