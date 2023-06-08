@@ -139,21 +139,21 @@
       tags:
         - setup-env
 
-    - name: Delete demo inventory
-      awx.awx.inventory:
-        name: 'Demo Inventory'
-        state: absent
-        organization: Default
-      tags:
-        - setup-env
+    # - name: Delete demo inventory
+    #   awx.awx.inventory:
+    #     name: 'Demo Inventory'
+    #     state: absent
+    #     organization: Default
+    #   tags:
+    #     - setup-env
 
-    - name: Delete demo project
-      awx.awx.project:
-        name: 'Demo Project'
-        state: absent
-        organization: Default
-      tags:
-        - setup-env
+    # - name: Delete demo project
+    #   awx.awx.project:
+    #     name: 'Demo Project'
+    #     state: absent
+    #     organization: Default
+    #   tags:
+    #     - setup-env
 
 
 
