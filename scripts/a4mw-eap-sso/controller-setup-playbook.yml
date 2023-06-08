@@ -104,7 +104,7 @@
         name: eap-sso
         organization: Default
         state: present
-        local_path: /var/lib/awx/projects/eap-sso
+        local_path: eap-sso
       tags:
         - setup-env
 
