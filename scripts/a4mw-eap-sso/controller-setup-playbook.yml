@@ -21,7 +21,6 @@
         image: "quay.io/acme_corp/servicenow-ee:latest"
       tags:
         - setup-ee
-        - setup-env
 
     - name: Create an inventory in automation controller
       awx.awx.inventory:
@@ -51,16 +50,16 @@
       tags:
         - setup-env
 
-    - name: Create eap group and add jbcs-eap
+    - name: Create jbcs group and add jbcs-eap
       awx.awx.group:
-        name: eap
+        name: jbcs
         inventory: eap-sso
         hosts:
           - jbcs-eap
       tags:
         - setup-env
 
-    - name: Create eap group and add jbcs-eap
+    - name: Create db group and add jbcs-eap
       awx.awx.group:
         name: db
         inventory: eap-sso
@@ -71,10 +70,11 @@
 
     - name: Create sso group and add sso
       awx.awx.group:
-        name: eap
+        name: sso
         inventory: eap-sso
         hosts:
-          - jbcs-eap
+          - sso1
+          - sso2
       tags:
         - setup-env
 
@@ -108,181 +108,42 @@
       tags:
         - setup-env
 
-  ## TODO: verify projects synced before template in case of skip?
-    - name: Launch apache playbooks project sync 
-      awx.awx.project_update:
-        project: "Apache playbooks"
-        wait: true
-      tags:
-        - solve-project
-        - solve-workflow
-        - solve-all
-  
-    - name: Create install apache Job Template
+    - name: Create deploy template
       awx.awx.job_template:
-        name: "Install Apache"
+        name: eap-sso-deploy
         organization: Default
         state: present
-        inventory: Lab-Inventory
+        inventory: eap-sso
         become_enabled: True
-        playbook: apache.yml
-        project: Apache playbooks 
+        playbook: deploy.yml
+        project: eap-sso
         credential: lab-credentials 
-      tags:
-        - solve-job_template 
-        - solve-workflow
-        - solve-all
-
-  ## Verify Job Template is launched on skip
-    - name: Launch the Apache Job Template
-      awx.awx.job_launch:
-        job_template: "Install Apache"
-      register: job_apache
-      tags:
-        - solve-job_template
-        - solve-jt_apache
-        - solve-workflow
-        - solve-all
-        
-        
-  
-  ## TODO: review/verify job_launch success ?
-
-    - name: Create a second Project from git, additional playbooks
-      awx.awx.project:
-        name: "Additional playbooks"
-        organization: Default
-        state: present
-        scm_type: git
-        scm_url: https://github.com/leogallego/instruqt-wyfp-additional.git
-      tags:
-        - solve-project2
-        - solve-workflow
-        - solve-all
-
-      
-  ## TODO: verify projects synced before template in case of skip?
-    - name: Launch additional playbooks project sync 
-      awx.awx.project_update:
-        project: "Additional playbooks"
-        wait: true
-      tags:
-        - solve-project2
-        - solve-workflow
-        - solve-all
-  
-
-    - name: Create set motd Job Template
-      awx.awx.job_template:
-        name: "Set motd"
-        organization: Default
-        state: present
-        inventory: Lab-Inventory
-        become_enabled: True
-        playbook: motd_facts.yml
-        project: "Additional playbooks" 
-        credential: lab-credentials 
-      tags:
-        - solve-job_template3 #2
-        - solve-workflow
-        - solve-all
-
-  ## Verify Job Template is launched on skip
-    - name: Launch the set motd Job Template
-      awx.awx.job_launch:
-        job_template: "Set motd"
-      register: job_motd
-      tags:
-        - solve-job_template3 #2
-        - solve-jt_motd
-        - solve-workflow
-        - solve-all
-        
-
-## Get inventory ready for postgresql in node 3
-
-    - name: Add node3 to Lab-Inventory
-      awx.awx.host:
-        name: node3
-        inventory: Lab-Inventory
-        state: present
-      tags:
-        - solve-pre-workflow
-        - solve-node3
-        - solve_job_template2 #3
-        - solve-workflow
-        - solve-all
-        
-
-    - name: Create database group and add node3 
-      awx.awx.group:
-        name: database
-        inventory: Lab-Inventory
-        hosts:
-          - node3    
-      tags:
-        - solve-pre-workflow
-        - solve-database
-        - solve-job_template2 #3
-        - solve-workflow
-        - solve-all
-
-
-    - name: Create Extended services Job Template
-      awx.awx.job_template:
-        name: "Extended services"
-        organization: Default
-        state: present
-        inventory: Lab-Inventory
-        become_enabled: True
-        playbook: extended_services.yml
-        project: "Additional playbooks" 
-        credential: lab-credentials 
-      tags:     
-        - solve-job_template2 #3    
-        - solve-workflow   
-        - solve-all
-
-  ## Verify Job Template is launched on skip
-    - name: Launch the Extended services Job Template
-      awx.awx.job_launch:
-        job_template: "Extended services"
-      register: job_extended
-      tags:
-        - solve-job_template2 #3
-        - solve-jt_extended
-        - solve-workflow
-        - solve-all
-        
-
-
-### survey
-    - name: Create a Job Template with Survey
-      awx.awx.job_template: 
-        name: "Install Apache with Survey"
-        organization: "Default"
-        state: "present"
-        inventory: "Lab-Inventory"
-        become_enabled: True
-        playbook: "apache_template.yml"
-        project: "Apache playbooks"
-        credential: lab-credentials
         survey_enabled: yes
         survey_spec: "{{ lookup('files', 'apache_survey.json') }}"
       tags:
-          - solve-jt_survey
-          - solve-all
+        - setup-env
 
-    ## Verify Job Template is launched on skip
-    - name: Launch the Apache Job Template with Survey
-      awx.awx.job_launch:
-        job_template: "Install Apache with Survey"
-      register: job_apache_survey
+    - name: Delete demo template
+      awx.awx.job_template:
+        name: 'Demo Job Template'
+        state: absent
       tags:
-        - solve-jt_survey
-        - solve-all
-        
-### end survey
+        - setup-env
+
+    - name: Delete demo inventory
+      awx.awx.inventory:
+        name: 'Demo Inventory'
+        state: absent
+      tags:
+        - setup-env
+
+    - name: Delete demo project
+      awx.awx.project:
+        name: 'Demo Project'
+        state: absent
+      tags:
+        - setup-env
+
 
 
 #########################################
