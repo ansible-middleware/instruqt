@@ -34,7 +34,7 @@ notes:
 
     ![inventories-home-with-examples.png](../assets/inventories-home-with-examples.png)
 
-    Access the Inventories view by clicking Inventories from the left navigation bar. This view shows all the inventories that are configured. 
+    Access the Inventories view by clicking Inventories from the left navigation bar. This view shows all the inventories that are configured.
 
     An Inventory is a collection of hosts and groups against which jobs may be launched, the same as an Ansible inventory file.
 - type: text

@@ -5,7 +5,6 @@ type: challenge
 title: Inspecting an Inventory
 teaser: Managing hosts and groups for our scenario
 notes:
-
 - type: text
   contents: |-
     # Inventories, create new inventory
