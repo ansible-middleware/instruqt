@@ -2,16 +2,10 @@
 slug: a4mw-eap-sso-inventory
 id: ufntl6meghns
 type: challenge
-title: Creating an Inventory
-teaser: Managing hosts and groups the easy way
+title: Inspecting an Inventory
+teaser: Managing hosts and groups for our scenario
 notes:
-- type: text
-  contents: |-
-    # Inventories
 
-    ![inventories-home-with-examples.png](../assets/inventories-home-with-examples.png)
-
-    An Inventory is a collection of hosts against which jobs may be launched, the same as an Ansible inventory file.
 - type: text
   contents: |-
     # Inventories, create new inventory
@@ -47,43 +41,23 @@ An inventory is a collection of hosts against which jobs (ex. playbooks) may be 
 In automation controller you will be able to run multiple playbooks against these inventories without recreating them.
 
 
-☑️ Task 1 - Creation of the Inventory
+☑️ Task 1 - Locate the Inventory
 ===
 
 1. On the side navigation bar, under the **Resources** section, click on **Inventories**
-2. Click on the blue **Add** button
-3. Select **Add inventory** from the dropdown
-4. Name it `Lab-Inventory` . Leave all the other fields as they are.
-5. Click **Save**
+2. Click on the **sso-eap** inventory
+3. Click in the "**groups** tab item
+4. Examine the groups configured in the inventory
 
-☑️ Task 2 - Add Hosts to the Lab-Inventory
+
+☑️ Task 2 - Examine hosts in the inventory
 ===
 
-1. If you are not in the  `Lab-Inventory`, click on it again to edit it.
+1. If you are not in the **sso-eap** inventrory, click on it again to open it.
 2. On the tab bar, click on **Hosts**
-3. Click on the blue **Add** button.
-4. Enter the name `node1` in the **Name** text box. Leave all the other fiels as they are.
-5. Click **Save**
-6. Repeat the above steps to create a new host, named `node2`.
-
-
-☑️ Task 3 - Create the [web] group in Lab-Inventory
-===
-
-1. Once you've added `node1` and `node2` to the `Lab-Inventory`
-2. On the tab bar of `Lab-Inventory`, click on **Groups**
-3. Click on the **Add** button to create a new group.
-4. Create a new group named `web` (notice you don't need to input as [web] as in an inventory file).
-5. Click **Save** when you are finished.
-
-
-☑️ Task 4 - Add node1 and node2 to the [web] group in Lab-Inventory
-===
-
-1. Click on the newly created `web` group and click on the **Hosts** tab on the top menu.
-2. Click **Add existing host**. A pop up will appear.
-3. Select both `node1` and `node2`, then click **Save**.
-4. Verify `node1` and `node2` are now added to the `web` group.
+3. Examine the hosts configured in the inventory:
+  * `jbcs-eap` will execute Jboss Core Services and Jboss Enterprise Application platform, and belongs to the `db`, `jbcs`, and `eap` groups
+  * `sso1` and `sso2` will provide Single Sign-On, and belong to the `sso` group
 
 
 ✅ Next Challenge
@@ -93,7 +67,7 @@ Press the `Check` button below to go to the next challenge once you’ve complet
 🐛 Encountered an issue?
 ====
 
-If you have encountered an issue or have noticed something not quite right, please [open an issue](https://github.com/ansible/instruqt/issues/new?labels=intro-to-controller&title=Issue+with+Intro+to+Controller+slug+ID:+a4mw-eap-sso-inventory&assignees=leogallego).
+If you have encountered an issue or have noticed something not quite right, please [open an issue](https://github.com/ansible-middleware/instruqt/issues/new?labels=a4mw-eap-sso&title=Issue+with+Deploy+Red+Hat+Single+Sign-On+with+Ansible+for+Middleware+collections+slug+ID:+a4mw-eap-sso-inventory&assignees=guidograzioli).
 
 <style type="text/css" rel="stylesheet">
   .lightbox {

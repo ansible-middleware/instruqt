@@ -30,6 +30,15 @@ notes:
     Access the Jobs view by clicking Jobs from the left navigation bar. This view shows all the jobs that have ran, including projects, templates, management jobs, SCM updates, playbook runs, etc.
 - type: text
   contents: |-
+    # Automation controller Inventories view
+
+    ![inventories-home-with-examples.png](../assets/inventories-home-with-examples.png)
+
+    Access the Inventories view by clicking Inventories from the left navigation bar. This view shows all the inventories that are configured. 
+
+    An Inventory is a collection of hosts and groups against which jobs may be launched, the same as an Ansible inventory file.
+- type: text
+  contents: |-
     # Automation controller Templates view
 
     ![job-templates-home-with-example-job-template.png](../assets/job-templates-home-with-example-job-template.png)
