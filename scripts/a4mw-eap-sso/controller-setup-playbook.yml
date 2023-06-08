@@ -89,6 +89,16 @@
       tags:
         - setup-env
 
+    - name: Create project directory
+      ansible.builtin.file:
+        state: directory
+        path: /var/lib/awx/projects/eap-sso
+        mode: 0777
+        owner: awx
+        group: awx
+      tags:
+        - setup-env
+
     - name: Create project
       awx.awx.project:
         name: eap-sso
