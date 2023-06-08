@@ -119,7 +119,7 @@
         project: eap-sso
         credential: lab-credentials 
         survey_enabled: yes
-        survey_spec: "{{ lookup('files', 'apache_survey.json') }}"
+        survey_spec: "{{ lookup('files', 'deploy_survey.yaml') }}"
       tags:
         - setup-env
 
@@ -381,7 +381,7 @@
         project: "Apache playbooks"
         credential: lab-credentials
         survey_enabled: yes
-        survey_spec: "{{ lookup('file', 'files/apache_survey.json') }}"
+        survey_spec: "{{ lookup('file', 'files/deploy_survey.json') }}"
       check_mode: true
       register: check_survey
       failed_when: check_survey.changed

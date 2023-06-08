@@ -81,6 +81,22 @@ su - $USER -c '/bin/ansible-galaxy collection install awx.awx'
 
 # Get playbook from repo
 /usr/bin/curl https://raw.githubusercontent.com/ansible-middleware/instruqt/main/scripts/a4mw-eap-sso/controller-setup-playbook.yml -o /tmp/setup-scripts/controller-setup.yml
+sudo bash -c 'cat >deploy_survey.yaml <<EOL
+- type: "text"
+  question_name: "ClientID"
+  question_description: "Client ID for service account"
+  variable: rhn_username
+  required: true
+  default: "${JBOSSNETWORK_CLIENTID}"
+- type: "password"
+  question_name: "Secret"
+  question_description: "Secret text for service account"
+  variable: rhn_password
+  required: true
+  default: "${JBOSSNETWORK_API_SECRET}"
+EOL
+'
+
 # Use playbook to setup environment
 /bin/ansible-playbook --version
 /bin/ansible-playbook /tmp/setup-scripts/controller-setup.yml -vv --tags setup-env
