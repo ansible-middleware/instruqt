@@ -99,6 +99,14 @@
       tags:
         - setup-env
 
+    - name: Create project directory
+      ansible.builtin.git:
+        dest: /var/lib/awx/projects/eap-sso
+        repo: 'https://github.com/ansible-middleware/instruqt-a4mw-eap-sso.git'
+        depth: 1
+      tags:
+        - setup-env
+
     - name: Create project
       awx.awx.project:
         name: eap-sso
