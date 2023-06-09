@@ -118,3 +118,4 @@ sudo chmod 644 /tmp/setup-scripts/hub_token
 
 # Use playbook to setup environment
 /bin/ansible-playbook /tmp/setup-scripts/controller-setup.yml -vv --tags setup-env
+/bin/ansible-playbook /tmp/setup-scripts/controller-setup.yml -vv --tags setup-project
