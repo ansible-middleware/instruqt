@@ -138,7 +138,7 @@
         wait: false
         credential: git-credentials
       tags:
-        - setup-env
+        - setup-project
 
     - name: Create deploy template
       awx.awx.job_template:
@@ -153,7 +153,7 @@
         survey_enabled: yes
         survey_spec: "{{ lookup('file', 'deploy_survey.json') }}"
       tags:
-        - setup-env
+        - setup-project
 
     - name: Delete demo template
       awx.awx.job_template:
