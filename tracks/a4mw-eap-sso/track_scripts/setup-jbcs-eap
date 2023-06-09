@@ -34,12 +34,9 @@ gpgcheck=0
 EOL
 cat /etc/yum.repos.d/centos8-appstream.repo'
 
-
 dnf clean all
 dnf install -y  @postgresql
 /usr/bin/postgresql-setup --initdb
 systemctl start postgresql
-
+systemctl stop nginx
 setenforce 0
-
-

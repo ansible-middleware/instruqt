@@ -102,7 +102,7 @@
         inventory: eap-sso
         credential: git-credentials
         overwrite: True
-        update_on_launch: True
+        update_on_launch: False
         organization: Default
         source: scm
         source_project: eap-sso
@@ -156,12 +156,12 @@
       tags:
         - setup-env
 
-    - name: Turn off collection download
-      awx.awx.settings:
-        name: "AWX_COLLECTIONS_ENABLED"
-        value: "False"
-      tags:
-        - setup-env
+    # - name: Turn off collection download
+    #   awx.awx.settings:
+    #     name: "AWX_COLLECTIONS_ENABLED"
+    #     value: "False"
+    #   tags:
+    #     - setup-env
 
 #########################################
 ####        CHECK MODE
