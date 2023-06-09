@@ -81,7 +81,7 @@ su - $USER -c '/bin/ansible-galaxy collection install awx.awx'
 
 # Get playbook from repo
 /usr/bin/curl https://raw.githubusercontent.com/ansible-middleware/instruqt/main/scripts/a4mw-eap-sso/controller-setup-playbook.yml -o /tmp/setup-scripts/controller-setup.yml
-sudo chown rhel:rhel controller-setup.yml
+sudo chown rhel:rhel /tmp/setup-scripts/controller-setup.yml
 sudo cat >/tmp/setup-scripts/deploy_survey.json <<EOL
 {
   "name": "Customer Portal Credentials",
