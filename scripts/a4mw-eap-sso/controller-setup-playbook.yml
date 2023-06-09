@@ -82,7 +82,7 @@
         wait: false
         credential: git-credentials
       tags:
-        - setup-project
+        - setup-env
       retries: 3
       delay: 3
       register: result
@@ -93,7 +93,7 @@
         name: eap-sso
         organization: Default
       tags:
-        - setup-project
+        - setup-env
 
     - name: Add the project inventory source
       awx.awx.inventory_source:
@@ -108,7 +108,7 @@
         source_project: eap-sso
         source_path: inventory/inventory
       tags:
-        - setup-project
+        - setup-env
 
     - name: Create deploy template
       awx.awx.job_template:
@@ -122,7 +122,7 @@
         survey_enabled: yes
         survey_spec: "{{ lookup('file', 'deploy_survey.json') }}"
       tags:
-        - setup-project
+        - setup-env
 
     - name: Delete demo template
       awx.awx.job_template:
@@ -153,6 +153,13 @@
         name: 'Demo Credential'
         credential_type: Machine
         state: absent
+      tags:
+        - setup-env
+
+    - name: Turn off collection download
+      awx.awx.settings:
+        name: "AWX_COLLECTIONS_ENABLED"
+        value: "False"
       tags:
         - setup-env
 
