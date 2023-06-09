@@ -27,6 +27,7 @@
         name: "{{ item }}"
         inventory: eap-sso
         state: present
+        enabled: true
       loop:
         - jbcs-eap
         - sso1
