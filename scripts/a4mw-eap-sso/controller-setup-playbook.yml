@@ -83,6 +83,10 @@
         credential: git-credentials
       tags:
         - setup-project
+      retries: 3
+      delay: 3
+      register: result
+      until: result.rc == 0
 
     - name: Create an inventory in automation controller
       awx.awx.inventory:
