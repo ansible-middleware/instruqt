@@ -76,6 +76,7 @@
         state: present
         scm_type: git
         scm_url: 'rhel@control:eap-sso'
+        scm_refspec: '+refs/heads/*:refs/remotes/origin/*'
         scm_update_on_launch: true
         update_project: true
         wait: false
