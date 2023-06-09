@@ -124,4 +124,4 @@ sudo cp mkcert-v*-linux-amd64 /usr/local/bin/mkcert
 /usr/local/bin/mkcert jbcs-eap
 mv jbcs-eap-key.pem /home/rhel/eap-sso/roles/certificates/files/eap-sso.lab.key
 mv jbcs-eap.pem /home/rhel/eap-sso/roles/certificates/files/eap-sso.lab.crt
-cd eap-sso && git add roles/certificates/files/* && git commit -m "Add certificates"
+cd /home/rhel/eap-sso && git add roles/certificates/files/* && git commit -m "Add certificates"

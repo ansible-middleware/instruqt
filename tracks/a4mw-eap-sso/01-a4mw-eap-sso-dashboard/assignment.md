@@ -89,13 +89,29 @@ An **Inventory** is a collection of hosts against which playbooks may be launche
 
 Click on the **Inventories** button in the Dashboard or the link in the sidebar menu and explore the **eap-sso** inventory that comes pre-loaded. Don't forget to look at the tabs!
 
+In particular, the **Sources** tab page will list the inventories that are dinamically loaded from the project files. Open the **eap-sso-source** item and verify that is points
+to the `inventory/inventory` file inside the **eap-sso** project.
+
 
 ☑️ Task 3 - Explore the projects section
 ===
 
 **Projects** are logical groups of Ansible playbooks in automation controller. These playbooks usually reside in a source code version control system like Git (and platforms as Github or Gitlab). With **Projects** we can reference a repository or directory with one or several playbooks, that we will later use.
 
-Click on the **Projects** button in the Dashboard or the link in the sidebar menu and explore the **eap-sso-deploy** project that comes pre-loaded. Don't forget to look at the tabs!
+Click on the **Projects** button in the Dashboard or the link in the sidebar menu and explore the **eap-sso** project. The important settings in this configuration page, are the:
+
+* _Source Control URL_: the project is bound to a git repository called **eap-sso** located in the home directory for the `rhel` user of the `control` host.
+* _Update revision on launch_: setting this instructs the Ansible controller to verify if new commits are available in the git repository every time the template associated with project is executed.
+
+
+☑️ Task 4 - Explore the templates section
+===
+
+**Templates** are execution configurations, same concept as Ansible playbook. Click the **eap-sso-deploy** template that comes pre-loaded. You will notice that it points to 
+`deploy.yml` playbook inside the git repository. In the next track sections we will use a code editor to open that git repository, make changes, and run new deployments using this
+job template. If you click on the **survey** tab, you'll find a couple credentials which are configured to be set at every execution (do not mind the values, they have been
+set and excrypted by default): those enable the Ansible Middleware collection to perform downloads from the Red Hat Customer Portal automatically via a feature called **Jboss Network Download API**.
+
 
 
 ✅ Next Challenge
