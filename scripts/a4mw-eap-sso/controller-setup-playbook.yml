@@ -121,33 +121,33 @@
       tags:
         - setup-env
 
-    - name: Create project
-      awx.awx.project:
-        name: eap-sso
-        organization: Default
-        state: present
-        scm_type: git
-        scm_url: 'rhel@control:eap-sso'
-        scm_update_on_launch: true
-        update_project: true
-        credential: git-credentials
-      tags:
-        - setup-env
+    # - name: Create project
+    #   awx.awx.project:
+    #     name: eap-sso
+    #     organization: Default
+    #     state: present
+    #     scm_type: git
+    #     scm_url: 'rhel@control:eap-sso'
+    #     scm_update_on_launch: true
+    #     update_project: true
+    #     credential: git-credentials
+    #   tags:
+    #     - setup-env
 
-    - name: Create deploy template
-      awx.awx.job_template:
-        name: eap-sso-deploy
-        organization: Default
-        state: present
-        inventory: eap-sso
-        become_enabled: True
-        playbook: deploy.yml
-        project: eap-sso
-        credential: lab-credentials 
-        survey_enabled: yes
-        survey_spec: "{{ lookup('file', 'deploy_survey.json') }}"
-      tags:
-        - setup-env
+    # - name: Create deploy template
+    #   awx.awx.job_template:
+    #     name: eap-sso-deploy
+    #     organization: Default
+    #     state: present
+    #     inventory: eap-sso
+    #     become_enabled: True
+    #     playbook: deploy.yml
+    #     project: eap-sso
+    #     credential: lab-credentials 
+    #     survey_enabled: yes
+    #     survey_spec: "{{ lookup('file', 'deploy_survey.json') }}"
+    #   tags:
+    #     - setup-env
 
     - name: Delete demo template
       awx.awx.job_template:
