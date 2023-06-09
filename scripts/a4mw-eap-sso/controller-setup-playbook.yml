@@ -7,13 +7,6 @@
   collections:
     - awx.awx 
 
-  vars:
-    controller_host: localhost
-    controller_user: admin
-    controller_pass: ansible123!
-    inventory_name: eap-sso
-    credentials_name: lab-credentials
-
   tasks:
     - name: Add EE to Controller
       awx.awx.execution_environment:
@@ -43,7 +36,7 @@
 
     - name: Create eap group and add jbcs-eap
       awx.awx.group:
-        name: jbcs
+        name: eap
         inventory: eap-sso
         hosts:
           - jbcs-eap
@@ -78,30 +71,51 @@
       tags:
         - setup-env
 
+    - name: Create Hub Credentials for the lab
+      awx.awx.credential:
+        credential_type: Ansible Galaxy/Automation Hub API Token
+        name: hub-credentials
+        organization: Default
+        inputs:
+          url: https://cloud.redhat.com/api/automation-hub/
+          auth_url: https://sso.redhat.com/auth/realms/redhat-external/protocol/openid-connect/token
+          token: "{{ lookup('file', 'hub_token' ) }}"
+      tags:
+        - setup-env
+
     - name: Create machine Credentials for the lab
       awx.awx.credential:
         name: lab-credentials
         credential_type: Machine
         organization: Default
         inputs:
-          username: rhel 
+          username: rhel
           ssh_key_data: "{{ lookup('file', '/home/rhel/.ssh/id_rsa' ) }}"
       tags:
         - setup-env
 
-    - name: Create project directory
-      ansible.builtin.file:
-        state: directory
-        path: /var/lib/awx/projects/eap-sso
-        mode: 0777
-        owner: awx
-        group: awx
+    - name: Create source code Credentials for the lab
+      awx.awx.credential:
+        name: git-credentials
+        credential_type: Source Control
+        organization: Default
+        inputs:
+          username: rhel
+          ssh_key_data: "{{ lookup('file', '/home/rhel/.ssh/id_rsa' ) }}"
       tags:
         - setup-env
 
-    - name: Create project directory
+    - name: Update default organization to pull from hub
+      organization:
+        name: "Default"
+        state: present
+        galaxy_credentials:
+          - Ansible Galaxy
+          - hub-credentials
+
+    - name: Clone project directory
       ansible.builtin.git:
-        dest: /var/lib/awx/projects/eap-sso
+        dest: /home/rhel/eap-sso
         repo: 'https://github.com/ansible-middleware/instruqt-a4mw-eap-sso.git'
         depth: 1
       tags:
@@ -112,7 +126,11 @@
         name: eap-sso
         organization: Default
         state: present
-        local_path: eap-sso
+        scm_type: git
+        scm_url: 'rhel@control:eap-sso'
+        scm_update_on_launch: true
+        update_project: true
+        credential: git-credentials
       tags:
         - setup-env
 
@@ -139,23 +157,29 @@
       tags:
         - setup-env
 
-    # - name: Delete demo inventory
-    #   awx.awx.inventory:
-    #     name: 'Demo Inventory'
-    #     state: absent
-    #     organization: Default
-    #   tags:
-    #     - setup-env
+    - name: Delete demo inventory
+      awx.awx.inventory:
+        name: 'Demo Inventory'
+        state: absent
+        organization: Default
+      tags:
+        - setup-env
 
-    # - name: Delete demo project
-    #   awx.awx.project:
-    #     name: 'Demo Project'
-    #     state: absent
-    #     organization: Default
-    #   tags:
-    #     - setup-env
+    - name: Delete demo project
+      awx.awx.project:
+        name: 'Demo Project'
+        state: absent
+        organization: Default
+      tags:
+        - setup-env
 
-
+    - name: Delete demo credential
+      awx.awx.credential:
+        name: 'Demo Credential'
+        credential_type: Machine
+        state: absent
+      tags:
+        - setup-env
 
 #########################################
 ####        CHECK MODE
