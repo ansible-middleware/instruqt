@@ -62,7 +62,7 @@ cat /etc/yum.repos.d/centos8-appstream.repo'
 
 
 sudo dnf clean all
-#sudo dnf install -y ansible-navigator ansible-lint yamllint nc
+sudo dnf install -y ansible-lint
 #pip3.9 install yamllint
 
 

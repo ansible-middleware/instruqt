@@ -98,7 +98,8 @@ Click on the **Inventories** button in the Dashboard or the link in the sidebar 
 In particular, the **Sources** tab page will list the inventories that are dinamically loaded from the project files. Open the **eap-sso-source** item and verify that its *Inventory file* option
 points to the `inventory/inventory` file inside the **eap-sso** project.
 
-Now click the **Sync** button: this will start the syncing between the hosts available to Ansible controller and those defined in the project git repository inventory. You will notice the field *Last Job Status* now reports **Pending** status, and after a few seconds **Running**; and eventually it will report **Successful** after the execution terminates.
+Now click the **Sync** button: this will start the syncing between the hosts available to Ansible controller and those defined in the project git repository inventory. You will notice the field *Last Job Status* now reports **Pending** status, and after a few seconds **Running**; and eventually it will report **Successful** after the execution terminates. You can click on the **Pending** link to 
+access the output log of the synchonize operation: if you do, remember to go back to **eap-sso-source** inventory source page before going further ahead.
 
 When the syncing is completed, on the tab bar, now click on **Back to Sources**, then the **Hosts** tab, and examine the hosts configured in the inventory:
   * `jbcs-eap` will execute Jboss Core Services and Jboss Enterprise Application platform, and belongs to the `db`, `jbcs`, and `eap` groups

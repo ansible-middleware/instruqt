@@ -2,14 +2,18 @@
 slug: a4mw-eap-sso-first-deployment
 id: ufntl6meghns
 type: challenge
-title: Inspecting an Inventory
-teaser: Managing hosts and groups for our scenario
+title: Our first deployment
+teaser: Launching the job template to deploy JBCS and EAP services
 notes:
 - type: text
   contents: |-
     # Our first deployments
 
     In this challenge, now that our project setup is finalized, we will start our first deployment.
+
+    At the end of deployment, two services will be up and running on the `jbcs-eap` node:
+    * JBCS is a web server and reverse proxy, accepting https requests and proxying down to EAP
+    * EAP is an application container, running a custom java web application called *addressbook*
 tabs:
 - title: Automation controller
   type: service
@@ -27,7 +31,7 @@ tabs:
 - title: EAP-SSO
   type: service
   hostname: jbcs-eap
-  path: /
+  path: /mcm/
   port: 443
 difficulty: basic
 timelimit: 600
@@ -48,6 +52,11 @@ BLAHBLAH
 4. The launch dialog open, asking for credentials (defaults are already set), click **Next**
 5. Click **Launch**; you will be redirected the executing job output page.
 6. Wait for the job to finish; you can scroll the output to have glimpse of what is being executed.
+7. Notice how each task output is colored differently; colors correspond to outcome status, which is very important in ansible:
+ * **OK (green)** indicates that no change was applied by tasks because the configuration was already found as expected.
+ * **CHANGED (yellow)** indicates that the wanted configuration has been applied, thus generating a change.
+ * **FAIL (red)** indicates that the tasks failed for some reason; sometimes the failure is fatal, other times you will see the playbook recovers the situation
+ * **SKIPPED (cyan)** indicates a tasks that was not executed, either because the playbook decided so, or because of some condition not allowing it run.
 
 
 

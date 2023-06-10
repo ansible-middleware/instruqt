@@ -75,8 +75,8 @@
       ansible.builtin.shell: |
         git config --global user.email "rhel@a4mw.instruqt.local"
         git config --global user.name "A4MW Instruqt student"
-        mv /home/rhel/jbcs-eap-key.pem /home/rhel/eap-sso/roles/certificates/files/eap-sso.lab.key
-        mv /home/rhel/jbcs-eap.pem /home/rhel/eap-sso/roles/certificates/files/eap-sso.lab.crt
+        mv /home/rhel/jbcs-eap-key.pem /home/rhel/eap-sso/roles/certificates/files/jbcs-eap.key
+        mv /home/rhel/jbcs-eap.pem /home/rhel/eap-sso/roles/certificates/files/jbcs-eap.crt
         git add -A && git commit -m "Add certificates"
       args:
         chdir: /home/rhel/eap-sso
@@ -140,20 +140,21 @@
     - name: Launch a Project with extra_vars without waiting
       awx.awx.project_update:
         project: eap-sso
-        wait: True
+        wait: False
       retries: 5
       delay: 5
       register: result
       until: result is not failed
       tags:
-        - prepare-env
+        - update-project
 
+    # this should trigger update_project so the above is not in prepare-env
     - name: Update inventory source
       inventory_source_update:
         name: "eap-sso-source"
         inventory: eap-sso
         organization: Default
-        wait: True
+        wait: False
       tags:
         - prepare-env
 
