@@ -118,10 +118,15 @@ sudo chmod 644 /tmp/setup-scripts/hub_token
 # Use playbook to setup environment
 /bin/ansible-playbook /tmp/setup-scripts/controller-setup.yml -vv --tags setup-env
 
+git config --global user.email "rhel@a4mw.instruqt.local"
+git config --global user.name "A4MW Instruqt student"
+
 curl -JLO "https://dl.filippo.io/mkcert/latest?for=linux/amd64"
 chmod +x mkcert-v*-linux-amd64
 sudo cp mkcert-v*-linux-amd64 /usr/local/bin/mkcert
 /usr/local/bin/mkcert jbcs-eap
+
 mv jbcs-eap-key.pem /home/rhel/eap-sso/roles/certificates/files/eap-sso.lab.key
 mv jbcs-eap.pem /home/rhel/eap-sso/roles/certificates/files/eap-sso.lab.crt
+sudo chown rhel:rhel -R /home/rhel/eap-sso
 cd /home/rhel/eap-sso && git add roles/certificates/files/* && git commit -m "Add certificates"

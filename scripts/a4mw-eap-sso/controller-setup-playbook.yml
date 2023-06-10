@@ -102,7 +102,7 @@
         inventory: eap-sso
         credential: git-credentials
         overwrite: True
-        update_on_launch: False
+        update_on_launch: True
         organization: Default
         source: scm
         source_project: eap-sso
