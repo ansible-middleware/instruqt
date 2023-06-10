@@ -137,7 +137,7 @@
         - setup-env
 
     - name: Launch a Project with extra_vars without waiting
-      project_update:
+      awx.awx.project_update:
         project: eap-sso
         wait: True
       tags:
