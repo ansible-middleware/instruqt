@@ -122,6 +122,8 @@ curl -JLO "https://dl.filippo.io/mkcert/latest?for=linux/amd64"
 chmod +x mkcert-v*-linux-amd64
 sudo cp mkcert-v*-linux-amd64 /usr/local/bin/mkcert
 /usr/local/bin/mkcert jbcs-eap
+mv ./jbcs-eap.pem ./jbcs-eap-key.pem /home/rhel/
+chown rhel:rhel /home/rhel/*.pem
 
 # Use playbook to setup environment
 /bin/ansible-playbook /tmp/setup-scripts/controller-setup.yml -vvv --tags setup-env
