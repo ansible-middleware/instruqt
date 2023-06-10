@@ -73,7 +73,7 @@
         git config --global user.name "A4MW Instruqt student"
         mv /home/rhel/jbcs-eap-key.pem /home/rhel/eap-sso/roles/certificates/files/eap-sso.lab.key
         mv /home/rhel/jbcs-eap.pem /home/rhel/eap-sso/roles/certificates/files/eap-sso.lab.crt
-        git add -A && git commit -m "Add certificates" && git push
+        git add -A && git commit -m "Add certificates"
       args:
         chdir: /home/rhel/eap-sso
       ignore_errors: true
@@ -97,7 +97,8 @@
         state: present
         scm_type: git
         scm_url: 'rhel@control:eap-sso'
-        scm_refspec: '+refs/heads/main:refs/remotes/origin/main'
+        scm_branch: main
+        scm_refspec: '+refs/heads/*:refs/remotes/origin/*'
         scm_update_on_launch: true
         update_project: false
         wait: true
@@ -132,43 +133,43 @@
       tags:
         - setup-env
 
-    - name: Launch a Project with extra_vars without waiting
-      awx.awx.project_update:
-        project: eap-sso
-        wait: True
-      retries: 5
-      delay: 5
-      register: result
-      until: result is not failed
-      tags:
-        - setup-env
+    # - name: Launch a Project with extra_vars without waiting
+    #   awx.awx.project_update:
+    #     project: eap-sso
+    #     wait: True
+    #   retries: 5
+    #   delay: 5
+    #   register: result
+    #   until: result is not failed
+    #   tags:
+    #     - setup-env
 
-    - name: Update inventory source
-      inventory_source_update:
-        name: "eap-sso-source"
-        inventory: eap-sso
-        organization: Default
-        wait: True
-      tags:
-        - setup-env
+    # - name: Update inventory source
+    #   inventory_source_update:
+    #     name: "eap-sso-source"
+    #     inventory: eap-sso
+    #     organization: Default
+    #     wait: True
+    #   tags:
+    #     - setup-env
 
-    - name: Create deploy template
-      awx.awx.job_template:
-        name: eap-sso-deploy
-        organization: Default
-        state: present
-        inventory: eap-sso
-        playbook: deploy.yml
-        project: eap-sso
-        credential: lab-credentials
-        survey_enabled: yes
-        survey_spec: "{{ lookup('file', 'deploy_survey.json') }}"
-      tags:
-        - setup-env
-      retries: 10
-      delay: 10
-      register: result
-      until: result is not failed
+    # - name: Create deploy template
+    #   awx.awx.job_template:
+    #     name: eap-sso-deploy
+    #     organization: Default
+    #     state: present
+    #     inventory: eap-sso
+    #     playbook: deploy.yml
+    #     project: eap-sso
+    #     credential: lab-credentials
+    #     survey_enabled: yes
+    #     survey_spec: "{{ lookup('file', 'deploy_survey.json') }}"
+    #   tags:
+    #     - setup-env
+    #   retries: 10
+    #   delay: 10
+    #   register: result
+    #   until: result is not failed
 
     - name: Delete demo template
       awx.awx.job_template:
