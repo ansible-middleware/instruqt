@@ -69,6 +69,31 @@
       become: true
       become_user: rhel
 
+    - name: "Add certificates to git"
+      ansible.builtin.shell: |
+        git config --global user.email "rhel@a4mw.instruqt.local"
+        git config --global user.name "A4MW Instruqt student"
+        mv /home/rhel/jbcs-eap-key.pem /home/rhel/eap-sso/roles/certificates/files/eap-sso.lab.key
+        mv /home/rhel/jbcs-eap.pem /home/rhel/eap-sso/roles/certificates/files/eap-sso.lab.crt
+        git add -A && git commit -m "Add certificates" && git push
+      args:
+        chdir: /home/rhel/eao-sso
+      become: true
+      become_user: rhel
+      ignore_errors: true
+      register: output
+      failed_when: >
+        output.msg != "" and
+        ("error" in output.msg or
+        "conflict" in output.msg or
+        "Errno" in output.msg or
+        "fatal" in output.msg or
+        (output.stdout != "" and
+        "nothing to commit, working tree clean" not in output.stdout) or
+        (output.stderr != ""))
+      tags:
+        - setup-env
+
     - name: Create project
       awx.awx.project:
         name: eap-sso
@@ -76,7 +101,7 @@
         state: present
         scm_type: git
         scm_url: 'rhel@control:eap-sso'
-        scm_refspec: '+refs/heads/*:refs/remotes/origin/*'
+        scm_refspec: '+refs/heads/main:refs/remotes/origin/main'
         scm_update_on_launch: true
         update_project: false
         wait: true
@@ -84,7 +109,7 @@
         timeout: 0
       tags:
         - setup-env
-      retries: 3
+      retries: 5
       delay: 3
       register: result
       until: result is not failed
@@ -117,6 +142,8 @@
         inventory: eap-sso
         organization: Default
         wait: True
+      tags:
+        - setup-env
 
     - name: Create deploy template
       awx.awx.job_template:
@@ -167,29 +194,6 @@
         state: absent
       tags:
         - setup-env
-
-    - name: "Add certificates to git"
-      ansible.builtin.shell: |
-        git config --global user.email "rhel@a4mw.instruqt.local"
-        git config --global user.name "A4MW Instruqt student"
-        mv /home/rhel/jbcs-eap-key.pem /home/rhel/eap-sso/roles/certificates/files/eap-sso.lab.key
-        mv /home/rhel/jbcs-eap.pem /home/rhel/eap-sso/roles/certificates/files/eap-sso.lab.crt
-        git add -A && git commit -m "Add certificates" && git push
-      args:
-        chdir: /home/rhel/eao-sso
-      become: true
-      become_user: rhel
-      ignore_errors: true
-      register: output
-      failed_when: >
-        output.msg != "" and
-        ("error" in output.msg or
-        "conflict" in output.msg or
-        "Errno" in output.msg or
-        "fatal" in output.msg or
-        (output.stdout != "" and
-        "nothing to commit, working tree clean" not in output.stdout) or
-        (output.stderr != ""))
 
 
 #########################################
