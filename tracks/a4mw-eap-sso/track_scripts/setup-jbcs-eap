@@ -43,10 +43,10 @@ setenforce 0
 
 sudo bash -c 'cat >/tmp/setup_postgres.sql <<EOL
 create database keycloak;
-create user "keycloak-user" with encrypted password 'keycloak-pass';
+create user "keycloak-user" with encrypted password '"'"'keycloak-pass'"'"';
 grant all privileges on database keycloak to "keycloak-user";
 create database addressbook;
-create user addressbook with encrypted password 'addressbookpass';
+create user addressbook with encrypted password '"'"'addressbookpass'"'"';
 grant all privileges on database addressbook to addressbook;
 EOL
 cat /tmp/setup_postgres.sql'

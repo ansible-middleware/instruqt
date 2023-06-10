@@ -8,11 +8,3 @@ chown -R rhel:rhel /home/rhel/.ssh
 scp -o StrictHostKeyChecking=no /etc/resolv.conf root@jbcs-eap:/etc/resolv.conf
 scp -o StrictHostKeyChecking=no /etc/resolv.conf root@sso1:/etc/resolv.conf
 scp -o StrictHostKeyChecking=no /etc/resolv.conf root@sso2:/etc/resolv.conf
-
-# Set controller access env variables
-export CONTROLLER_HOST=localhost
-export CONTROLLER_USERNAME=admin
-export CONTROLLER_PASSWORD='ansible123!'
-export CONTROLLER_VERIFY_SSL=false
-
-/bin/ansible-playbook /tmp/setup-scripts/controller-setup.yml -vvv --tags prepare-env ||:
