@@ -77,7 +77,7 @@
         mv /home/rhel/jbcs-eap.pem /home/rhel/eap-sso/roles/certificates/files/eap-sso.lab.crt
         git add -A && git commit -m "Add certificates" && git push
       args:
-        chdir: /home/rhel/eao-sso
+        chdir: /home/rhel/eap-sso
       become: true
       become_user: rhel
       ignore_errors: true
