@@ -7,11 +7,17 @@ teaser: Let's explore the dashboard, inventory and projects!
 notes:
 - type: text
   contents: |-
-    # Welcome to Ansible automation controller
+    # Welcome to the Ansible for Middleware workshop
 
-    Welcome to our interactive lab: this first part will be on Ansible automation controller, the web-based UI interface for **Red Hat Ansible Automation Platform**.
+    In this interactive lab we will demonstrate how easy it is to use Ansible Automation Platform and the A4MW collections to setup complex environments, perform deployments,
+    and operate day 0-1-2 tasks.
 
-    In this lab, we will demonstrate how easy it is to use automation controller and the Middleware Automation collections to setup complex environments.
+    In the first part will be on Ansible automation controller, the web-based UI interface for **Red Hat Ansible Automation Platform**.
+- type: text
+  contents: |-
+    # Ansible automation controller
+
+    Meet Ansible automation controller, the web-based UI interface for **Red Hat Ansible Automation Platform**.
 
     Let's explore the web-UI interface, in order to get comfortable with what is already configured in.
 - type: text
@@ -113,10 +119,10 @@ Click on the **Projects** button in the Dashboard or the link in the sidebar men
 ☑️ Task 4 - Explore the templates section
 ===
 
-**Templates** are execution configurations, same concept as Ansible playbook. 
+**Templates** are execution configurations, same concept as Ansible playbook.
 
 Click on the Templates link in the sidebar menu and explore the **eap-sso-deploy** template that comes pre-loaded. You will notice that it points to `deploy.yml` playbook inside the git repository
-provided by the **eap-sso** project we have inspected in _Task 3_; in the next track sections we will use a code editor to open that git repository, make changes, and run new deployments using this job template. 
+provided by the **eap-sso** project we have inspected in _Task 3_; in the next track sections we will use a code editor to open that git repository, make changes, and run new deployments using this job template.
 
 If you click on the **Survey** tab, you'll find a pair of credentials which are configured to be set at every execution (do not mind the values, they have been set and encrypted by default): those enable the Ansible Middleware collection to perform downloads from the Red Hat Customer Portal automatically via a feature called **Jboss Network Download API**. Surveys are an important feature
 of Ansible controller because they allow to manage variables, possibly secrets, which are not good enough candidates for ansible vault files, or external secret management services which
