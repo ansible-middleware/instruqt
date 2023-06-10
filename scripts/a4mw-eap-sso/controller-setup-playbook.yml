@@ -110,7 +110,7 @@
       tags:
         - setup-env
       retries: 5
-      delay: 3
+      delay: 5
       register: result
       until: result is not failed
 
@@ -159,7 +159,7 @@
       tags:
         - setup-env
       retries: 10
-      delay: 3
+      delay: 10
       register: result
       until: result is not failed
 
