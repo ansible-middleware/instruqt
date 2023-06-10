@@ -1,4 +1,14 @@
+#!/bin/bash
+
 touch /etc/sudoers.d/rhel_sudoers
 echo "%rhel ALL=(ALL:ALL) NOPASSWD:ALL" > /etc/sudoers.d/rhel_sudoers
 cp -a /root/.ssh/* /home/rhel/.ssh/.
 chown -R rhel:rhel /home/rhel/.ssh
+
+# Set controller access env variables
+export CONTROLLER_HOST=localhost
+export CONTROLLER_USERNAME=admin
+export CONTROLLER_PASSWORD='ansible123!'
+export CONTROLLER_VERIFY_SSL=false
+
+/bin/ansible-playbook /tmp/setup-scripts/controller-setup.yml -vvv --tags prepare-env ||:

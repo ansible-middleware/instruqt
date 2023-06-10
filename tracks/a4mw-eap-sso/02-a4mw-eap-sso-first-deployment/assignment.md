@@ -7,11 +7,9 @@ teaser: Managing hosts and groups for our scenario
 notes:
 - type: text
   contents: |-
-    # Inventories, create new inventory
+    # Our first deployments
 
-    ![inventories-create-new-inventory.png](../assets/inventories-create-new-inventory.png)
-
-    In this challenge, we will be creating a new inventory, adding hosts and creating a host group inside the inventory.
+    In this challenge, now that our project setup is finalized, we will start our first deployment.
 tabs:
 - title: Automation controller
   type: service

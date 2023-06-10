@@ -127,5 +127,3 @@ chown rhel:rhel /home/rhel/*.pem
 
 # Use playbook to setup environment
 /bin/ansible-playbook /tmp/setup-scripts/controller-setup.yml -vvv --tags setup-env
-
-/bin/ansible-playbook /tmp/setup-scripts/controller-setup.yml -vvv --tags prepare-env ||:
