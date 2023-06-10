@@ -115,8 +115,8 @@ EOL
 sudo chown rhel:rhel /tmp/setup-scripts/hub_token
 sudo chmod 644 /tmp/setup-scripts/hub_token
 
-git config --global user.email "rhel@a4mw.instruqt.local"
-git config --global user.name "A4MW Instruqt student"
+su - $USER -c 'git config --global user.email "rhel@a4mw.instruqt.local"'
+su - $USER -c 'git config --global user.name "A4MW Instruqt student"'
 
 curl -JLO "https://dl.filippo.io/mkcert/latest?for=linux/amd64"
 chmod +x mkcert-v*-linux-amd64
@@ -127,3 +127,5 @@ chown rhel:rhel /home/rhel/*.pem
 
 # Use playbook to setup environment
 /bin/ansible-playbook /tmp/setup-scripts/controller-setup.yml -vvv --tags setup-env
+
+/bin/ansible-playbook /tmp/setup-scripts/controller-setup.yml -vvv --tags prepare-env ||:
