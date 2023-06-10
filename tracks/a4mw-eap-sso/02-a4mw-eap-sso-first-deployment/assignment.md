@@ -26,6 +26,11 @@ tabs:
   hostname: control
   path: /editor/
   port: 443
+- title: EAP-SSO
+  type: service
+  hostname: jbcs-eap
+  path: /
+  port: 443
 difficulty: basic
 timelimit: 600
 ---
@@ -40,7 +45,7 @@ BLAHBLAH
 ===
 
 1. On the side navigation bar, under the **Resources** section, click on **Templates**
-2. Click on the **sso-eap** template
+2. Click on the **sso-eap-deploy** template
 3. On the page that opens, click the **Launch** button
 4. The launch dialog open, asking for credentials (defaults are already set), click **Next**
 5. Click **Launch**; you will be redirected the executing job output page.
