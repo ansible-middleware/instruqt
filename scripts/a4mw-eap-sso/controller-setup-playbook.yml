@@ -154,7 +154,7 @@
         name: "eap-sso-source"
         inventory: eap-sso
         organization: Default
-        wait: False
+        wait: True
       tags:
         - prepare-env
 

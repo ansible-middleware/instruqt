@@ -43,11 +43,17 @@ setenforce 0
 
 sudo bash -c 'cat >/tmp/setup_postgres.sql <<EOL
 create database keycloak;
-create user keycloak-user with encrypted password 'keycloak-pass';
-grant all privileges on database keycloak to keycloak-user;
+create user "keycloak-user" with encrypted password 'keycloak-pass';
+grant all privileges on database keycloak to "keycloak-user";
 create database addressbook;
 create user addressbook with encrypted password 'addressbookpass';
 grant all privileges on database addressbook to addressbook;
 EOL
 cat /tmp/setup_postgres.sql'
 sudo -iu postgres psql < /tmp/setup_postgres.sql
+
+sudo bash -c 'echo "host    all             all             0.0.0.0/0               md5" >> /var/lib/pgsql/data/pg_hba.conf'
+sudo bash -c 'echo "listen_addresses = '"'"'*'"'"'"   >> /var/lib/pgsql/data/postgresql.conf'
+systemctl restart postgresql
+
+sudo firewall-cmd --permanent --add-port=5432/tcp

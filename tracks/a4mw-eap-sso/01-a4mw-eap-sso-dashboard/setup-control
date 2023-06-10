@@ -5,6 +5,10 @@ echo "%rhel ALL=(ALL:ALL) NOPASSWD:ALL" > /etc/sudoers.d/rhel_sudoers
 cp -a /root/.ssh/* /home/rhel/.ssh/.
 chown -R rhel:rhel /home/rhel/.ssh
 
+scp /etc/resolv.conf root@jbcs-eap:/etc/resolv.conf
+scp /etc/resolv.conf root@sso1:/etc/resolv.conf
+scp /etc/resolv.conf root@sso2:/etc/resolv.conf
+
 # Set controller access env variables
 export CONTROLLER_HOST=localhost
 export CONTROLLER_USERNAME=admin
