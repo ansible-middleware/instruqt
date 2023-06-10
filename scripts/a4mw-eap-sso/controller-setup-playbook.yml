@@ -136,6 +136,13 @@
       tags:
         - setup-env
 
+    - name: Launch a Project with extra_vars without waiting
+      project_update:
+        project: eap-sso
+        wait: True
+      tags:
+        - setup-env
+
     - name: Update inventory source
       inventory_source_update:
         name: "eap-sso-source"
