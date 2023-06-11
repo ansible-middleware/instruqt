@@ -31,7 +31,7 @@ timelimit: 600
 ---
  💡 Redeploy
 ===
-#### Estimated time to complete: *5 minutes*<p>
+#### Estimated time to complete: *10 minutes*<p>
 
 
 ☑️ Task 1 - Load the repository directory in the editor

@@ -38,7 +38,7 @@ timelimit: 600
 ---
 🗃️ First deployment
 ===
-#### Estimated time to complete: *10 minutes*<p>
+#### Estimated time to complete: *15 minutes*<p>
 
 Now that we are comfortable with the Ansible controller configuration, we can actually execute the very first playbook, which:
 
@@ -60,7 +60,7 @@ Now that we are comfortable with the Ansible controller configuration, we can ac
 7. Notice how each task output is colored differently; colors correspond to outcome status, which is very important in ansible:
  * **OK (green)** indicates that no change was applied by tasks because the configuration was already found as expected.
  * **CHANGED (yellow)** indicates that the wanted configuration has been applied, thus generating a change.
- * **FAIL (red)** indicates that the tasks failed for some reason; sometimes the failure is fatal, other times you will see the playbook recovers the situation
+ * **FATAL (red)** indicates that the tasks failed for some reason; sometimes the failure is fatal, other times you will see the playbook recovers the situation, showing **FAILED - TRYING (black)**.
  * **SKIPPED (cyan)** indicates a tasks that was not executed, either because the playbook decided so, or because of some condition not allowing it run.
 
 
