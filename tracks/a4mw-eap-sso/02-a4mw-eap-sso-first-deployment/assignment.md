@@ -28,6 +28,11 @@ tabs:
   hostname: jbcs-eap
   path: /mcm/
   port: 443
+- title: addressbook
+  type: service
+  hostname: jbcs-eap
+  path: /addressbook/
+  port: 443
 difficulty: basic
 timelimit: 600
 ---
@@ -35,7 +40,12 @@ timelimit: 600
 ===
 #### Estimated time to complete: *10 minutes*<p>
 
-BLAHBLAH
+Now that we are comfortable with the Ansible controller configuration, we can actually execute the very first playbook, which:
+
+* Installs pre-requisite packages and resources on all hosts
+* Installs JBoss Core Services on the **jbcs-eap** host
+* Installs JBoss Enterprise Application Platform on the **jbcs-eap** host
+* Deploys the **addressbook** web application on the JBoess EAP service
 
 
 ☑️ Task 1 - Locate and run the deploy Template

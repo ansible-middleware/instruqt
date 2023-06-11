@@ -37,7 +37,8 @@ cat /etc/yum.repos.d/centos8-appstream.repo'
 # dnf clean all
 # #Install a package to build metadata of the repo and not need to wait during labs
 # dnf install -y vim
-systemctl stop nginx
+sudo systemctl stop nginx
+sudo systemctl stop code-server
 setenforce 0
 
-
+sudo cp /tmp/resolv.conf /etc/resolv.conf

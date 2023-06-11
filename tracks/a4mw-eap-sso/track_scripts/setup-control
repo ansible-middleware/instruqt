@@ -127,3 +127,8 @@ chown rhel:rhel /home/rhel/*.pem
 
 # Use playbook to setup environment
 /bin/ansible-playbook /tmp/setup-scripts/controller-setup.yml -vvv --tags setup-env
+
+
+scp -o StrictHostKeyChecking=no /etc/resolv.conf root@jbcs-eap:/tmp/resolv.conf
+scp -o StrictHostKeyChecking=no /etc/resolv.conf root@sso1:/tmp/resolv.conf
+scp -o StrictHostKeyChecking=no /etc/resolv.conf root@sso2:/tmp/resolv.conf

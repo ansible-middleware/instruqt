@@ -39,6 +39,7 @@ dnf install -y  @postgresql
 /usr/bin/postgresql-setup --initdb
 systemctl start postgresql
 systemctl stop nginx
+systemctl stop code-server
 setenforce 0
 
 sudo bash -c 'cat >/tmp/setup_postgres.sql <<EOL
@@ -57,3 +58,5 @@ sudo bash -c 'echo "listen_addresses = '"'"'*'"'"'"   >> /var/lib/pgsql/data/pos
 systemctl restart postgresql
 
 sudo firewall-cmd --permanent --add-port=5432/tcp
+
+sudo cp /tmp/resolv.conf /etc/resolv.conf
