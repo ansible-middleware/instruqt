@@ -65,14 +65,13 @@ in case you want to compare the configuration from the two different prespective
 ===
 
 1. Find the file **eap.yml** in the directory tree
-2. Note where the playbook invokes the collection roles at line 5
+2. Note where the playbook invokes the collection roles at line 5. In this case, we invoke three different roles, to setup the JDBC driver module in EAP and the systemd unit, in addition to the main install operation.
   ```
     roles:
       - redhat.eap.eap_install
       - redhat.eap.eap_driver
       - redhat.eap.eap_systemd
   ```
-  In this case, we invoke three different roles, to setup the JDBC driver module in EAP and the systemd unit, in addition to the main install operation.
 3. Take a look at preliminary steps in the `pre_tasks` section: those operations setup the instance firewall to allow ingress to ports use by EAP
 4. Find the file **inventory/group_vars/eap.yml** in the directory tree; the variables defined in this file will override the collection defaults, worth noting that:
   * `app_url` is the download URL of the web application we deploy in EAP

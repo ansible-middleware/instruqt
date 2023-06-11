@@ -63,8 +63,8 @@ If not already, you can log in with the following credentials and then continue 
 1. On the side navigation bar, under the **Resources** section, click on **Templates**
 2. Click on the **sso-eap-deploy** template
 3. On the page that opens, click the **Launch** button
-4. The launch dialog open, asking for credentials (defaults are already set), click **Next**
-5. Click **Launch**; you will be redirected the executing job output page.
+4. The launch dialog opens, on a **Survey** asking for credentials (defaults are already set), click **Next**
+5. You are now presented with the Launch **Preview** page: click **Launch**. You will be redirected the executing job output page.
 6. Wait for the job to finish; you can scroll the output to have glimpse of what is being executed.
 7. Notice how each task output is colored differently; colors correspond to outcome status, which is very important in ansible:
  * **OK (green)** indicates that no change was applied by tasks because the configuration was already found as expected.
@@ -73,15 +73,15 @@ If not already, you can log in with the following credentials and then continue 
  * **SKIPPED (cyan)** indicates a tasks that was not executed, either because the playbook decided so, or because of some condition not allowing it run.
 
 
-
 ☑️ Task 2 - Verify the services are deployed
 ===
 
-1. On the window top bar, locate and click the "JBCS-mcm" tab
+1. On the window top bar, locate and click the **JBCS-mcm** tab
 2. The page should show **mod_cluster/1.3.16.Final-10** in the heading. This means JBCS is operational; if it does not, try to click the ↻ 'refresh' button on the right side of the top bar
 3. In page content, you should read in **jbcs-eap**. This means EAP is operational, and attached to JBCS modcluster (reverse proxy) facility.
-4. Now on the top bar, locate and click the "addressbook" tab
+4. Now on the top bar, locate and click the **addressbook** tab
 5. Our sample web application should open; if it does not, try to click the ↻ 'refresh' button on the right side of the top bar
+6. If any of the above points fails for you, jump back to Task 1, and repeat the steps.
 
 
 ✅ Next Challenge
