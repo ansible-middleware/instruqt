@@ -1,6 +1,6 @@
 ---
 slug: a4mw-eap-sso-redeploy
-id: 1okbglrcvrxi
+id: r4ul612idzfw
 type: challenge
 title: Update the web application deployed in EAP
 teaser: Our developers have built a new version of the webapp, which requires authentication
@@ -9,7 +9,7 @@ notes:
   contents: |-
     # Redeploy
 
-    
+
 
     .
 tabs:
@@ -69,7 +69,7 @@ Press the `Check` button below to go to the next challenge once you’ve complet
 🐛 Encountered an issue?
 ====
 
-If you have encountered an issue or have noticed something not quite right, please [open an issue](https://github.com/ansible-middleware/instruqt/issues/new?labels=a4mw-eap-sso&title=Issue+with+Deploy+Red+Hat+Single+Sign-On+with+Ansible+for+Middleware+collections+slug+ID:+a4mw-eap-sso-configuration&assignees=guidograzioli).
+If you have encountered an issue or have noticed something not quite right, please [open an issue](https://github.com/ansible-middleware/instruqt/issues/new?labels=a4mw-eap-sso&title=Issue+with+Deploy+Red+Hat+Single+Sign-On+with+Ansible+for+Middleware+collections+slug+ID:+a4mw-eap-sso-redeploy&assignees=guidograzioli).
 
 <style type="text/css" rel="stylesheet">
   .lightbox {

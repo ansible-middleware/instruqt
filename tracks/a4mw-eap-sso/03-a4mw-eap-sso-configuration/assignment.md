@@ -3,7 +3,8 @@ slug: a4mw-eap-sso-configuration
 id: 1okbglrcvrxi
 type: challenge
 title: Inspect the deployment configuration
-teaser: Let's take a look at the Ansible resources which allowed us to deploy the services
+teaser: Let's take a look at the Ansible resources which allowed us to deploy the
+  services
 notes:
 - type: text
   contents: |-
