@@ -216,7 +216,7 @@
 
     - name: Check inventory 
       awx.awx.inventory:
-        name: Lab-Inventory
+        name: eap-sso
         organization: Default
         kind: ""
       check_mode: true
@@ -226,231 +226,33 @@
         - check-inventory
         - check-all
 
-    - name: Check node1 and node2 in Lab-Inventory
-      awx.awx.host:
-        name: "{{ item }}"
-        inventory: Lab-Inventory
-        state: present
-      loop:
-        - node1
-        - node2
-      check_mode: true
-      register: check_inv_hosts
-      failed_when: check_inv_hosts.changed
-      tags:
-        - check-hosts
-        - check-inv-hosts
-        - check-all
-
-    - name: Check web group and add hosts 
+    - name: Check sso group
       awx.awx.group:
-        name: web
-        inventory: Lab-Inventory
+        name: sso
+        inventory: eap-sso
         hosts:
-          - node1
-          - node2   
+          - sso1
+          - sso2
       check_mode: true
       register: check_inv_group
       failed_when: check_inv_group.changed
       tags:
-        - check-group 
-        - check-inv-group
+        - check-inventory
         - check-all
 
-
-    - name: Check your first Project from git
-      awx.awx.project:
-        name: "Apache playbooks"
-        organization: Default
-        state: present
-        scm_type: git
-        scm_url: https://github.com/leogallego/instruqt-wyfp.git
-      check_mode: true
-      register: check_proj
-      failed_when: check_proj.changed
-      tags:
-        - check-project
-        - check-all
-      
-
-  ## TODO: verify projects synced before template
-
-    - name: Check Apache Job Template
-      awx.awx.job_template:
-        name: "Install Apache"
-        organization: Default
-        state: present
-        inventory: Lab-Inventory
-        become_enabled: True
-        playbook: apache.yml
-        project: Apache playbooks 
-        credential: lab-credentials 
-      check_mode: true
-      register: check_jt_apache
-      failed_when: check_jt_apache.changed
-      tags:
-        - check-job_template 
-        - check-all
-        
-
-  ## TODO: review job_launch?
-
-    - name: Check an additional Project from git
-      awx.awx.project:
-        name: "Additional playbooks"
-        organization: Default
-        state: present
-        scm_type: git
-        scm_url: https://github.com/leogallego/instruqt-wyfp-additional.git
-      check_mode: true
-      register: check_proj2
-      failed_when: check_proj2.changed
-      tags:
-        - check-project2
-        - check-all
-
-  ## TODO: verify projects synced before template
-  #  - name: Launch  project sync 
-  #    project_update:
-  #      project: "Additional playbooks"
-  #      wait: true
-  #
-
-    - name: Check a motd Job Template
-      awx.awx.job_template:
-        name: "Set motd"
-        organization: Default
-        state: present
-        inventory: Lab-Inventory
-        become_enabled: True
-        playbook: motd_facts.yml
-        project: "Additional playbooks" 
-        credential: lab-credentials 
-      check_mode: true
-      register: check_jt_motd
-      failed_when: check_jt_motd.changed
-      tags:
-        - check-job_template3  
-        - check-all
-
-    - name: Check extended services Job Template
-      awx.awx.job_template:
-        name: "Extended services"
-        organization: Default
-        state: present
-        inventory: Lab-Inventory
-        become_enabled: True
-        playbook: extended_services.yml
-        project: "Additional playbooks" 
-        credential: lab-credentials 
-      check_mode: true
-      register: check_jt_ext
-      failed_when: check_jt_ext.changed
-      tags:
-        - check-job_template2         
-        - check-all
-
-
-    - name: Check node3 to Lab-Inventory
-      awx.awx.host:
-        name: node3
-        inventory: Lab-Inventory
-        state: present
-      check_mode: true
-      register: check_inv_host3
-      failed_when: check_inv_host3.changed
-      tags:
-        - check-pre-workflow
-        - check-node3
-        - check-all
-
-    - name: Check database group and add host
+    - name: Check eap group
       awx.awx.group:
-        name: database
-        inventory: Lab-Inventory
+        name: eap
+        inventory: eap-sso
         hosts:
-          - node3    
+          - jbcs-eap
       check_mode: true
-      register: check_inv_grp_db
-      failed_when: check_inv_grp_db.changed
+      register: check_inv_group
+      failed_when: check_inv_group.changed
       tags:
-        - check-pre-workflow
-        - check-database
+        - check-inventory
         - check-all
 
-
-    - name: Check a Workflow Template
-      awx.awx.workflow_job_template:
-        name: "Your first workflow"
-        description: Create a Workflow from previous Job Templates
-        organization: Default
-        inventory: Lab-Inventory
-        workflow_nodes:
-          - identifier: apache101
-            unified_job_template:
-              organization:
-                name: Default
-              name: "Install Apache"
-              type: job_template
-            credentials: []
-            related:
-              success_nodes:
-                - identifier: extended201
-                - identifier: motd201
-              failure_nodes: []
-              always_nodes: []
-              credentials: []
-          - identifier: extended201
-            unified_job_template:
-              organization:
-                name: Default
-              name: "Extended services"
-              type: job_template
-            credentials: []
-            related:
-              success_nodes: []
-              failure_nodes: []
-              always_nodes: []
-              credentials: []
-          - identifier: motd201
-            unified_job_template:
-              organization:
-                name: Default
-              name: "Set motd"
-              type: job_template
-            credentials: []
-            related:
-              success_nodes: []
-              failure_nodes: []
-              always_nodes: []
-              credentials: []   
-      check_mode: true
-      register: check_workflow
-      failed_when: check_workflow.changed
-      tags:
-        - check-workflow-only
-        - check-workflow  
-        - check-all
-
-### survey
-    - name: Check Apache with Survey
-      awx.awx.job_template: 
-        name: "Install Apache with Survey"
-        organization: "Default"
-        state: "present"
-        inventory: "Lab-Inventory"
-        become_enabled: True
-        playbook: "apache_template.yml"
-        project: "Apache playbooks"
-        credential: lab-credentials
-        survey_enabled: yes
-        survey_spec: "{{ lookup('file', 'files/deploy_survey.json') }}"
-      check_mode: true
-      register: check_survey
-      failed_when: check_survey.changed
-      tags:
-          - check-jt_survey
-          - check-all
 
 #########################################
 ## execution checks // apache service, package, html

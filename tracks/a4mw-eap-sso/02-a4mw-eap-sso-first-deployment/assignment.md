@@ -69,10 +69,10 @@ Now that we are comfortable with the Ansible controller configuration, we can ac
 ===
 
 1. On the window top bar, locate and click the "JBCS-mcm" tab
-2. The page should show **mod_cluster/1.3.16.Final-10** in the heading. This means JBCS is operational.
+2. The page should show **mod_cluster/1.3.16.Final-10** in the heading. This means JBCS is operational; if it does not, try to click the ↻ 'refresh' button on the right side of the top bar
 3. In page content, you should see "jbcs-eap/ajp". This means EAP is operational, and attached to JBCS modcluster (reverse proxy) facility.
 4. Now on the top bar, locate and click the "addressbook" tab
-5. Our sample web application should open
+5. Our sample web application should open; if it does not, try to click the ↻ 'refresh' button on the right side of the top bar
 
 
 ✅ Next Challenge

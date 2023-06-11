@@ -20,12 +20,4 @@ export CONTROLLER_PASSWORD='ansible123!'
 export CONTROLLER_VERIFY_SSL=false
 
 # Playbook run command
-CMD="/bin/ansible-playbook /tmp/setup-scripts/getting-started-controller/getting-started-controller-setup.yml"
-
-
-# Check $PROJECT exists.
-if ! $CMD --tags=check-project -vv; then
- echo "FAIL: ${PROJECT} project not found or something else is wrong. Remember it's case-sensitive! Please try again."
- exit 1
-fi
-
+CMD="/bin/ansible-playbook /tmp/setup-scripts/controller-setup.yml"
