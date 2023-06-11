@@ -52,6 +52,10 @@ Now that we are comfortable with the Ansible controller configuration, we can ac
 * Installs JBoss Enterprise Application Platform on the **jbcs-eap** host
 * Deploys the **addressbook** web application on the JBoess EAP service
 
+If not already, you can log in with the following credentials and then continue on to the tasks:
+
+* Username: `admin`
+* Password: `ansible123!`
 
 ☑️ Task 1 - Locate and run the deploy Template
 ===
@@ -75,7 +79,7 @@ Now that we are comfortable with the Ansible controller configuration, we can ac
 
 1. On the window top bar, locate and click the "JBCS-mcm" tab
 2. The page should show **mod_cluster/1.3.16.Final-10** in the heading. This means JBCS is operational; if it does not, try to click the ↻ 'refresh' button on the right side of the top bar
-3. In page content, you should see "jbcs-eap/ajp". This means EAP is operational, and attached to JBCS modcluster (reverse proxy) facility.
+3. In page content, you should read in **jbcs-eap**. This means EAP is operational, and attached to JBCS modcluster (reverse proxy) facility.
 4. Now on the top bar, locate and click the "addressbook" tab
 5. Our sample web application should open; if it does not, try to click the ↻ 'refresh' button on the right side of the top bar
 

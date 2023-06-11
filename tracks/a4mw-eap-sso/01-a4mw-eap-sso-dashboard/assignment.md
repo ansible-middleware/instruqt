@@ -9,7 +9,7 @@ notes:
   contents: |-
     # Welcome to the Ansible for Middleware workshop
 
-    In this interactive lab we will demonstrate how easy it is to use Ansible Automation Platform and the A4MW collections to setup complex environments, perform deployments,
+    In this interactive workshop we will demonstrate how easy it is to use Ansible Automation Platform and the A4MW collections to setup complex environments, perform deployments,
     and operate day 0-1-2 tasks.
 
     In the first part will be on Ansible automation controller, the web-based UI interface for **Red Hat Ansible Automation Platform**.
@@ -45,7 +45,7 @@ notes:
     An Inventory is a collection of hosts and groups against which jobs may be launched, the same as an Ansible inventory file.
 - type: text
   contents: |-
-    # Automation controller Templates view
+    # Automation controller Job Templates view
 
     ![job-templates-home-with-example-job-template.png](../assets/job-templates-home-with-example-job-template.png)
 
@@ -88,7 +88,7 @@ You will find the following buttons:
 * Projects sync fail.
 
 
-☑️ Task 2 - Explore the inventories section
+☑️ Task 2 - Explore the Inventories section
 ===
 
 An **Inventory** is a collection of hosts against which playbooks may be launched, the same as an Ansible inventory file you might know from working with Ansible on the command line.
@@ -102,30 +102,30 @@ Now click the **Sync** button: this will start the syncing between the hosts ava
 access the output log of the synchonize operation: if you do, remember to go back to **eap-sso-source** inventory source page before going further ahead.
 
 When the syncing is completed, on the tab bar, now click on **Back to Sources**, then the **Hosts** tab, and examine the hosts configured in the inventory:
-  * `jbcs-eap` will execute Jboss Core Services and Jboss Enterprise Application platform, and belongs to the `db`, `jbcs`, and `eap` groups
+  * `jbcs-eap` will execute JBoss Core Services and JBoss Enterprise Application platform, and belongs to the `db`, `jbcs`, and `eap` groups
   * `sso1` and `sso2` will provide the Single Sign-On authentication service, and belong to the `sso` group
 
 
-☑️ Task 3 - Explore the projects section
+☑️ Task 3 - Explore the Projects section
 ===
 
-**Projects** are logical groups of Ansible playbooks in automation controller. These playbooks usually reside in a source code version control system like Git (and platforms as Github or Gitlab). With **Projects** we can reference a repository or directory with one or several playbooks, that we will later use.
+**Projects** are logical groups of Ansible playbooks in automation controller. These playbooks usually reside in a source code version control system like Git (and platforms as GitHub or GitLab). With **Projects** we can reference a repository or directory with one or several playbooks, that we will later use.
 
-Click on the **Projects** button in the Dashboard or the link in the sidebar menu and explore the **eap-sso** project. The important settings in this configuration page, are the:
+Go back to Dashboard view and click on the **Projects** button, or click the link in the sidebar menu, and explore the **eap-sso** Project. The important settings in this configuration page are:
 
-* *Source Control URL*: the project is bound to a git repository called **eap-sso** located in the home directory for the _rhel_ user of the _control_ host.
-* *Update revision on launch*: setting this instructs the Ansible controller to verify if new commits are available in the git repository every time the template associated with project is executed.
+* *Source Control URL*: the Project is bound to a git repository called **eap-sso** located in the home directory for the _rhel_ user of the _control_ host.
+* *Update revision on launch*: setting this instructs the Ansible controller to verify if new commits are available in the git repository every time the template associated with Project is executed.
 
 
-☑️ Task 4 - Explore the templates section
+☑️ Task 4 - Explore the Job Templates section
 ===
 
-**Templates** are execution configurations, same concept as Ansible playbook.
+**Job Templates** are execution configurations, same concept as Ansible playbook.
 
-Click on the Templates link in the sidebar menu and explore the **eap-sso-deploy** template that comes pre-loaded. You will notice that it points to `deploy.yml` playbook inside the git repository
+Click on the **Templates** link in the sidebar menu and explore the **eap-sso-deploy** job template that comes pre-loaded. You will notice that it points to `deploy.yml` playbook inside the git repository
 provided by the **eap-sso** project we have inspected in _Task 3_; in the next track sections we will use a code editor to open that git repository, make changes, and run new deployments using this job template.
 
-If you click on the **Survey** tab, you'll find a pair of credentials which are configured to be set at every execution (do not mind the values, they have been set and encrypted by default): those enable the Ansible Middleware collection to perform downloads from the Red Hat Customer Portal automatically via a feature called **Jboss Network Download API**. Surveys are an important feature
+If you click on the **Survey** tab, you'll find a pair of credentials which are configured to be set at every execution (do not mind the values, they have been set and encrypted by default): those enable the Ansible Middleware collection to perform downloads from the Red Hat Customer Portal automatically via a feature called **JBoss Network Download API**. Surveys are an important feature
 of Ansible controller because they allow to manage variables, possibly secrets, which are not good enough candidates for ansible vault files, or external secret management services which
 do not depend on the user that executes the deployment.
 

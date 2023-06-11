@@ -45,28 +45,27 @@ in case you want to compare the configuration from the two different prespective
 
 1. In the **editor** tab, click on the File menu, then **Open folder...**
 2. Select the **eap-sso** directory, which is the working copy of the git repository
-3. Click **OK** and then confirm in the dialog that open, that you trust the contents
+3. Click **OK** and then confirm in the dialog that open, that you trust the contents, by clicking the **Yes, I Trust the Authors** button
 
 
 ☑️ Task 2 - Inspect the JBCS playbook and variables
 ===
 
 1. Find the file **jbcs.yml** in the project _EXPLORER_ (directory tree on the left side)
-2. Notice the collection call at line 7
+2. Note where the playbook invokes the collection `jbcs` role at line 7
 ```
   roles:
     - middleware_automation.jbcs.jbcs
 ```
-3. Take a look at preliminary steps in the `pre_tasks` section: those operations do some selinux tuning
-4. Find the file **inventory/group_vars/jbcs.yml** in the directory tree
-5. The variables defined in this file will override the collection defaults
+3. Take a look at preliminary steps in the `pre_tasks` section: those operations do some selinux configuration, ie. allowing the JBCS service to open proxied ports and allowing to execute with NIS (Network Information Service). This is an example of configuration that is currently required in the playbook, but will eventually be taken care of by the redhat.jbcs in a future release, since it's directly related to the JBCS service running on RHEL.
+4. Find the file **inventory/group_vars/jbcs.yml** in the directory tree. The variables defined in this file will override the collection defaults.
 
 
 ☑️ Task 3 - Inspect the EAP playbook and variables
 ===
 
 1. Find the file **eap.yml** in the directory tree
-2. Notice the collection calls at line 5
+2. Note where the playbook invokes the collection roles at line 5
   ```
     roles:
       - redhat.eap.eap_install
@@ -75,12 +74,11 @@ in case you want to compare the configuration from the two different prespective
   ```
   In this case, we invoke three different roles, to setup the JDBC driver module in EAP and the systemd unit, in addition to the main install operation.
 3. Take a look at preliminary steps in the `pre_tasks` section: those operations setup the instance firewall to allow ingress to ports use by EAP
-4. Find the file **inventory/group_vars/eap.yml** in the directory tree
-5. The variables defined in this file will override the collection defaults, worth noting that:
+4. Find the file **inventory/group_vars/eap.yml** in the directory tree; the variables defined in this file will override the collection defaults, worth noting that:
   * `app_url` is the download URL of the web application we deploy in EAP
   * `eap_yml_configs` loads additional configuration in EAP, specified in the YAML file
-6. Find the file **templates/eap_ymlconfig.yml.j2** in the directory tree
-7. This file contains configuration that is applied to EAP subsystems.
+5. Find the file **templates/eap_ymlconfig.yml.j2** in the directory tree
+  * This file contains configuration that is applied to EAP subsystems; declarative configuration of EAP components during its bootstrap phase is a new feature which has been made available, in Techincal Preview, since Wildfly 26.0.1/JBoss EAP 7.4.5, and will be Generally Available in the upcoming EAP 8.0. The module providing the feature is called **YAML Configuration Extension**, and the **redhat.eap** collection provides both the automatic install for the cumulative patch version needed (via the `eap_apply_cp` variable), and the steps to enable it (via the `eap_enable_yml_config` variable). Note that when `eap_apply_cp` is set to `True`, it is possible to pass the collection a specific patch version (like, for instance, `eap_patch_version: 7.4.7`) to be applied; otherwise, letting the variable undefined instructs the collection to determine what is the most recent patch version released at the time of execution.
 
 
 
