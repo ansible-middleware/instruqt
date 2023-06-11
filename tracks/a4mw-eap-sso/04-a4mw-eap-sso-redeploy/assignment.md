@@ -26,6 +26,11 @@ tabs:
   hostname: control
   path: /editor/
   port: 443
+- title: addressbook
+  type: service
+  hostname: jbcs-eap
+  path: /addressbook/
+  port: 443
 difficulty: basic
 timelimit: 600
 ---
@@ -37,29 +42,41 @@ timelimit: 600
 ☑️ Task 1 - Load the repository directory in the editor
 ===
 
-1. In the **editor** tab, click on the File menu, then **Load directory**
-2. Select the **eap-sso** directory, which is the working copy of the git repository
-3. Click **OK** and then confirm in the dialog that open, that you trust the contents
+1. Go to the **editor** tab; if the git repository is still open, process to Task 2 below.
+2. In the **editor** tab, click on the File menu, then **Load directory**
+3. Select the **eap-sso** directory, which is the working copy of the git repository
+4. Click **OK** and then confirm in the dialog that open, that you trust the contents
 
 
 ☑️ Task 2 - Update the version of the web application
 ===
 
 1. In the **editor** tab, find and open the **inventory/group_vars/eap.yml** file
-2. Update the web application download URL, replacing `app_url: https://github.com/guidograzioli/keycloak/raw/instruqt/addressbook-1.0.0.war` with `app_url: https://github.com/guidograzioli/keycloak/raw/instruqt/addressbook-1.1.0.war`.
-3. Switch to the git dialog (third icon on the left column)
-4. Fill the dialog text with `Updating web application download URL`
-5. Click on **Commit** to apply the changes
+2. Update the web application download URL, replacing `app_url: https://github.com/guidograzioli/keycloak/raw/instruqt/addressbook-1.0.0.war` with `app_url: https://github.com/guidograzioli/keycloak/raw/instruqt/addressbook-1.1.0.war`, and save with `Ctrl-s`
+3. Switch to the **Source Control** git dialog (third icon on the left column, should have a blue notification)
+4. Fill the dialog text called **Message** with `Updating web application download URL`
+5. Click on the blue **Commit** button to apply the changes
 
 
 ☑️ Task 3 - Locate and run the deploy Template
 ===
 
-1. On the side navigation bar, under the **Resources** section, click on **Templates**
-2. Click on the **sso-eap-deploy** template
-3. On the page that opens, click the **Launch** button
-4. The launch dialog open, asking for credentials (defaults are already set), click **Next**
-5. Click **Launch**; you will be redirected the executing job output page.
+1. Switch to the **Automation controller** tab
+2. On the side navigation bar, under the **Resources** section, click on **Templates**
+3. Click on the **sso-eap-deploy** template
+4. On the page that opens, click the **Launch** button
+5. The launch dialog open, asking for credentials (defaults are already set), click **Next**
+6. Click **Launch**; you will be redirected the executing job output page.
+
+
+☑️ Task 4 - Validate deployment
+===
+
+1. Follow the job execution output up to the end
+2. Note that all tasks should be ok (green) or skip (cyan), except the very last that perform the deployment of the newly downloaded web application.
+3. Also notice how a mostly unchanged execution run much faster than the initial deployment, as it is only verifying the configuration during most the execution.
+4. Now click on the **addressbook** tab and hit the ↻ refresh button
+5. You should get an error, because the web application deployment failed (in turn, because it requires an authentication service that is not yet deployed: we will configure the deployment of it in the next challenges)
 
 
 ✅ Next Challenge
