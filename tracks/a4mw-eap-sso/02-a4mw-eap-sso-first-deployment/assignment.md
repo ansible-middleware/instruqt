@@ -11,9 +11,14 @@ notes:
 
     In this challenge, now that our project setup is finalized, we will start our first deployment.
 
+    ![job-output.png](../assets/job-output.png)
+- type: text
+  contents: |-
     At the end of deployment, two services will be up and running on the `jbcs-eap` node:
     * JBCS is a web server and reverse proxy, accepting https requests and proxying down to EAP
     * EAP is an application container, running a custom java web application called *addressbook*
+
+    ![addressbook.png](../assets/addressbook.png)
 tabs:
 - title: Automation controller
   type: service
