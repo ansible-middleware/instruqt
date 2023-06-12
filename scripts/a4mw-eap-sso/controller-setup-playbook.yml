@@ -61,11 +61,10 @@
 
     - name: Clone project directory
       become: true
-      become_user: rhel    
+      become_user: rhel
       ansible.builtin.git:
         dest: /home/rhel/eap-sso
         repo: 'https://github.com/ansible-middleware/instruqt-a4mw-eap-sso.git'
-        depth: 1
       tags:
         - setup-env
 

@@ -33,9 +33,10 @@ tabs:
   path: /mcm/
   port: 443
 - title: addressbook
-  type: website
+  type: service
+  hostname: jbcs-eap
+  path: /addressbook/
   port: 443
-  url: https://jbcs-eap-443-$INSTRUQT_PARTICIPANT_ID.env.play.instruqt.com/addressbook/
 difficulty: basic
 timelimit: 600
 ---
