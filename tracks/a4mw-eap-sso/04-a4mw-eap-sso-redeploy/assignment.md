@@ -15,16 +15,11 @@ notes:
 
     Let's start by updating the Ansible configuration to download and deploy this new version inside EAP, and see how it goes.
 - type: text
-  contents: |-
-    # Quick recap
-
-    To recap where we are, after our first deployment:
-    * We have the host `jbcs-eap` running JBCS as a reverse proxy
-    * The same `jbcs-eap` host also runs JBoss EAP, and we have the web application *addressbook* version 1.0.0 deployed in it. It looks like:
-
-    ![addressbook.png](../assets/addressbook.png)
-
-    Remember it, because we are about to break it 😁
+  contents: "# Quick recap\n\nTo recap where we are, after our first deployment:\n*
+    We have the host `jbcs-eap` running JBCS as a reverse proxy\n* The same `jbcs-eap`
+    host also runs JBoss EAP, and we have the web application *addressbook* version
+    1.0.0 deployed in it. It looks like:\n\n![addressbook.png](../assets/addressbook.png)\n\nRemember
+    it, because we are about to break it \U0001F601"
 tabs:
 - title: Automation controller
   type: service

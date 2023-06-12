@@ -17,6 +17,16 @@ tabs:
 - title: Terminal
   type: terminal
   hostname: control
+- title: editor
+  type: service
+  hostname: control
+  path: /editor/
+  port: 443
+- title: JBCS-mcm
+  type: service
+  hostname: jbcs-eap
+  path: /mcm/
+  port: 443
 - title: addressbook
   type: service
   hostname: jbcs-eap
