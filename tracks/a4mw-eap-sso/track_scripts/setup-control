@@ -118,14 +118,16 @@ sudo chmod 644 /tmp/setup-scripts/hub_token
 su - $USER -c 'git config --global user.email "rhel@a4mw.instruqt.local"'
 su - $USER -c 'git config --global user.name "A4MW Instruqt student"'
 
-curl -JLO "https://dl.filippo.io/mkcert/latest?for=linux/amd64"
-chmod +x mkcert-v*-linux-amd64
-sudo cp mkcert-v*-linux-amd64 /usr/local/bin/mkcert
-/usr/local/bin/mkcert jbcs-eap
-mv ./jbcs-eap.pem ./jbcs-eap-key.pem /home/rhel/
-chown rhel:rhel /home/rhel/*.pem
+# curl -JLO "https://dl.filippo.io/mkcert/latest?for=linux/amd64"
+# chmod +x mkcert-v*-linux-amd64
+# sudo cp mkcert-v*-linux-amd64 /usr/local/bin/mkcert
+# /usr/local/bin/mkcert jbcs-eap
+# mv ./jbcs-eap.pem ./jbcs-eap-key.pem /home/rhel/
+# chown rhel:rhel /home/rhel/*.pem
 
 echo "${INSTRUQT_PARTICIPANT_ID}" > /home/rhel/student_id
+
+echo "${_SANDBOX_ID}" > /home/rhel/sandbox_id
 
 # Use playbook to setup environment
 /bin/ansible-playbook /tmp/setup-scripts/controller-setup.yml -vvv --tags setup-env
