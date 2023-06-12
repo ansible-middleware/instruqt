@@ -125,7 +125,7 @@ realm_clients:
             realm: addressbook
 ```
 
-   The above configuration will create an "addressbook" client in the "addressbook" realm, with two roles: `admin_role` and `user_role`. Then it will create two users: `administrator` with both roles, and `user`, beloging to the `user_role` only.
+   The above configuration will create an "addressbook" client in the "addressbook" realm, with two roles: `admin_role` and `user_role`. Then it will create two users: `administrator` with both roles, and `user`, beloging to the `user_role` only. The **addressbook** web application version 1.1.0, which we deployed, will authorize users that belong to the `user_role` role.
 
 4. Find the `password` for the users, and update with a password of your choice.
 5. Type **Ctrl-S** to save, or use the **File**/**Save** menu

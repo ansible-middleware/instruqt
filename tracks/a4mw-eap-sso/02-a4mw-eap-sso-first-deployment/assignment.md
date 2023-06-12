@@ -14,9 +14,18 @@ notes:
     ![job-output.png](../assets/job-output.png)
 - type: text
   contents: |-
+    # Scenario overview
+
     At the end of deployment, two services will be up and running on the `jbcs-eap` node:
     * JBCS is a web server and reverse proxy, accepting https requests and proxying down to EAP
     * EAP is an application container, running a custom java web application called *addressbook*
+
+    ![scenario](../assets/scenario-1.png)
+- type: text
+  contents: |-
+    # Addressbook web application
+
+    This how the web application version 1.0.0, which we will be deploying in JBoss EAP, looks like:
 
     ![addressbook.png](../assets/addressbook.png)
 tabs:

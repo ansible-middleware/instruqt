@@ -1,20 +1,24 @@
 slug: a4mw-eap-sso
 id: b0efd70uujxc
-title: Deploy Red Hat Single Sign-On with Ansible for Middleware collections
+title: Effective Middleware Automation Using Ansible
 teaser: Learn how to automate the deployment of Red Hat Single Sign-On using Ansible
   Automation Platform, and the certified collections provided by a4mw (Ansible for
   Middleware).
 description: |-
-  # Introduction to Ansible automation controller
+  # Effective Middleware Automation Using Ansible
 
-  Welcome to our interactive workshop on Red Hat Single Sign-On with Ansible for Middleware; during the workshop, we will be using Ansible automation controller,
-  the web-based UI interface for Red Hat Ansible Automation Platform.
+  ![a4mw](https://raw.githubusercontent.com/ansible-middleware/instruqt/main/assets/icons/a4mw.png)
+  Welcome to our interactive workshop on Middleware Automation Using Ansible; during the workshop, we will be using Ansible automation controller,
+  the web-based UI interface for Red Hat Ansible Automation Platform, together with Ansible for Middleware collections, to deploy multiple services, including Red Hat JBoss Enterprise Application
+  Platform, Red Hat Single Sign-On, and Red Hat JBoss Core Services.
 
-  In this lab, we will find a web application deployed on JBoss EAP and served via JBoss Core Services: after learning how Ansible and the Middleware Automation collections
+  # Deploy Red Hat Single Sign-On with Ansible for Middleware collections
+
+  In this workshop scenario, we will find a web application deployed on JBoss EAP and served via JBoss Core Services: after learning how Ansible and the Middleware Automation collections
   can help to setup such an environment, we will install and deploy an additional highly available authentication service, Red Hat Single Sign-On, using an additional certified
   collection, and we will update the deployment of the web application with a new version requiring an external authentication mechanism.
 
-  ![scenario](https://raw.githubusercontent.com/ansible-middleware/instruqt/main/assets/icons/a4mw.png)
+  ![scenario](https://raw.githubusercontent.com/ansible-middleware/instruqt/main/assets/scenario.png)
 
   This workshop is useful for both experienced Ansible users and beginners. No prior experience is required, although understanding playbook development concepts will help.
 
@@ -52,4 +56,4 @@ lab_config:
   overlay: false
   width: 33
   position: right
-checksum: "5030951065538755522"
+checksum: "13313098392079509195"

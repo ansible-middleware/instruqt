@@ -12,7 +12,7 @@ notes:
 
     The happy ending of a hard working day.
 
-    .
+    ![scenario](../assets/scenario-2.png)
 tabs:
 - title: Automation controller
   type: service
