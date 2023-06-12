@@ -76,9 +76,10 @@
         git config --global user.name "A4MW Instruqt student"
         cp /home/rhel/jbcs-eap-key.pem /home/rhel/eap-sso/roles/certificates/files/jbcs-eap.key
         cp /home/rhel/jbcs-eap.pem /home/rhel/eap-sso/roles/certificates/files/jbcs-eap.crt
+        cp /home/rhel/jbcs*.pem /home/rhel/jbcs*.crt /home/rhel/eap-sso/roles/certificates/files/
         cp /home/rhel/student_id /home/rhel/eap-sso/templates/student_id
         cp /home/rhel/sandbox_id /home/rhel/eap-sso/templates/sandbox_id
-        chown rhel /home/rhel/eap-sso/templates/*
+        chown rhel /home/rhel/eap-sso/templates/
         git add -A && git commit -m "Add certificates"
       args:
         chdir: /home/rhel/eap-sso
