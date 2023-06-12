@@ -1,8 +1,4 @@
 version: "3"
-secrets:
-- name: JBOSSNETWORK_CLIENTID
-- name: JBOSSNETWORK_API_SECRET
-- name: AUTOMATION_HUB_TOKEN
 virtualmachines:
 - name: control
   image: red-hat-mbu/automation-controller
@@ -22,3 +18,7 @@ virtualmachines:
   image: red-hat-mbu/ansible
   shell: /bin/su - rhel -s /bin/bash
   machine_type: e2-small
+secrets:
+- name: AUTOMATION_HUB_TOKEN
+- name: JBOSSNETWORK_API_SECRET
+- name: JBOSSNETWORK_CLIENTID
