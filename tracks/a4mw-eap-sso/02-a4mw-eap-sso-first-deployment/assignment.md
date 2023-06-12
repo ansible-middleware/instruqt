@@ -66,21 +66,51 @@ If not already, you can log in with the following credentials and then continue 
 4. The launch dialog opens, on a **Survey** asking for credentials (defaults are already set), click **Next**
 5. You are now presented with the Launch **Preview** page: click **Launch**. You will be redirected the executing job output page.
 6. Wait for the job to finish; you can scroll the output to have glimpse of what is being executed.
-7. Notice how each task output is colored differently; colors correspond to outcome status, which is very important in ansible:
+7. Notice how each task output is colored differently; colors correspond to outcome status, which is very important in Ansible:
  * **OK (green)** indicates that no change was applied by tasks because the configuration was already found as expected.
  * **CHANGED (yellow)** indicates that the wanted configuration has been applied, thus generating a change.
- * **FATAL (red)** indicates that the tasks failed for some reason; sometimes the failure is fatal, other times you will see the playbook recovers the situation, showing **FAILED - TRYING (black)**.
+ * **FATAL (red)** indicates that the tasks failed for some reason; sometimes the failure is fatal and the execution will stop; other times, showing **FAILED - TRYING (black)**, you will see the playbook recovers the situation. An example of recovery is when a playbook runs a command to check for the existance of some resource, and runs a create action when that command failed.
  * **SKIPPED (cyan)** indicates a tasks that was not executed, either because the playbook decided so, or because of some condition not allowing it run.
 
 
-☑️ Task 2 - Verify the services are deployed
+☑️ Task 2 - Noteworthy tasks
+===
+
+Let's inspect some tasks that run, producing the output at or around the following lines:
+
+* Ensuring required rpm packages are present
+  * line 11: use rpm to check installed packages
+  * line 16: add any missing package (for each host) to a list
+  * line 21: execute the package manager to install missing packages
+* Download JBCS install zipfiles
+  * line 131: contact the JBossnetwork API to find an authenticated download URL
+  * line 137: perform the download
+* Configure and install JBCS
+  * line 149: extract zipfile
+  * line 192: configure TLS/SSL
+  * line 198: configure the reverse proxy
+* Start and verify JBCS systemd unit
+  * lines 210-232
+* Download JBoss EAP install zipfiles
+  * line 324: contact the JBossnetwork API to find an authenticated download URL
+  * line 334: perform the download
+  * line 401: contact the JBossnetwork API to find an authenticated download URL for the patch
+  * line 414: perform the download of the cumulative patch
+* Install JDBC postgresql module in JBoss EAP
+  * line 620: download the library JAR
+  * line 626: deploy the module
+* Deploy the addressbook warfile
+  * lines 757-758
+
+
+☑️ Task 3 - Verify the services are deployed
 ===
 
 1. On the window top bar, locate and click the **JBCS-mcm** tab
 2. The page should show **mod_cluster/1.3.16.Final-10** in the heading. This means JBCS is operational; if it does not, try to click the ↻ 'refresh' button on the right side of the top bar
-3. In page content, you should read in **jbcs-eap**. This means EAP is operational, and attached to JBCS modcluster (reverse proxy) facility.
+3. In page content, you should read in **Node jbcs-eap (ajp://127.0.0.1:8009):**. This means EAP is operational, and attached to JBCS modcluster (reverse proxy) facility.
 4. Now on the top bar, locate and click the **addressbook** tab
-5. Our sample web application should open; if it does not, try to click the ↻ 'refresh' button on the right side of the top bar
+5. Our sample web application should open, or if the page was already opened, it will show **Not found**; click the ↻ 'refresh' button on the right side of the top bar, and the application will be loaded in the browser.
 6. If any of the above points fails for you, jump back to Task 1, and repeat the steps.
 
 

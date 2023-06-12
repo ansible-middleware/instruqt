@@ -84,11 +84,11 @@ timelimit: 600
    That is, because an idempotent collection will only report an _ok/not changed_ outcome when the expected configuration is the one which is defined in the scm repository; and reversely, will report a _changed_ state when commits were applied to the scm repository, thus, raising the trust on the _declared configuration in the scm repository being the **single source of truth**_ for the configuration of a live system.
 
    Any changes that wouldn't follow an scm commit, would have to be considered drift: important to account for, and with the added benefit that Ansible will _fix_ the unexpected state pro-actively, applying the expected configuration while reporting the change.
-4. Now click on the **addressbook** tab and hit the ↻ refresh button
+4. When the execution ends successfully, click on the **addressbook** tab and hit the ↻ refresh button
 5. You should get an error, likely **Forbidden**, because the web application deployment failed (in turn, because it requires an authentication service that is not yet deployed: we will configure the deployment of it in the next challenges).
 6. To verify the new version was deployed, switch to the **Terminal** tab in the top menu, and type or paste the command:
    `ssh root@jbcs-eap grep WFLYSRV0016 /opt/jboss_eap/jboss-eap-7.4/standalone/log/server.log`
-   to check the JBoss EAP logfile. It should show a line indicating, as expected, `WFLYSRV0016: Replaced deployment ..`
+   to check the JBoss EAP logfile. It should show a line indicating, as expected, `WFLYSRV0016: Replaced deployment ..` confirming the new web application version has been deployed
 
 
 ✅ Next Challenge

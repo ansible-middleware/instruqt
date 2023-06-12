@@ -81,11 +81,17 @@ Explore the Dashboard view.  Currently the Dashboard wont show much information 
 You will find the following buttons:
 
 * Hosts
+  The virtual machines that can be managed by Automation controller
 * Failed hosts
+  Virtual machines that are added to Automation controller, but cannot be accessed
 * Inventories
+  Groupings of hosts that can be targeted by Ansible playbooks / Job Templates
 * Inventory sync fail
+  Jobs that synchronize Host state with Inventory state that failed
 * Projects
-* Projects sync fail.
+  Groups of ansible playbooks that are hosted in the same scm repository
+* Projects sync fail
+  Jobs that synchronize scm state with Projects state that failed
 
 
 ☑️ Task 2 - Explore the Inventories section
@@ -102,8 +108,10 @@ Now click the **Sync** button: this will start the syncing between the hosts ava
 access the output log of the synchonize operation: if you do, remember to go back to **eap-sso-source** inventory source page before going further ahead.
 
 When the syncing is completed, on the tab bar, now click on **Back to Sources**, then the **Hosts** tab, and examine the hosts configured in the inventory:
-  * `jbcs-eap` will execute JBoss Core Services and JBoss Enterprise Application platform, and belongs to the `db`, `jbcs`, and `eap` groups
-  * `sso1` and `sso2` will provide the Single Sign-On authentication service, and belong to the `sso` group
+  * `sso1` and `sso2` will provide the Single Sign-On authentication service, and belong to the `sso` group. The instances are up, but nothing else has been configured.
+  * `jbcs-eap` will execute JBoss Core Services and JBoss Enterprise Application platform. Click on it, then switch to the **Groups** tab and verify it belongs to the `db`, `jbcs`, and `eap` groups. 
+
+A group is a set of hosts that facilitates sharing common variables across hosts: for instance, variables that apply to hosts providing the same service, like **eap**; or hosts that are located in the same environment, like **staging**; or even hosts that are located in the same place, **us-east-1** or **datacenter1** are good examples. Click on the **eap** group and check the **Details** page that opens: the variables shown are the values that have been fetched and synchronized by the job we just launched, and originate from scm repository that we will see in the next Task. 
 
 
 ☑️ Task 3 - Explore the Projects section
