@@ -41,6 +41,18 @@ timelimit: 600
 6. Click **Launch**; you will be redirected the executing job output page.
 
 
+☑️ Task 2 - Validate deployment
+===
+
+1. Follow the job execution output up to the end
+2. Note that all tasks should be ok (green) or skip (cyan), except the new **sso_realm** playbook will be executed, and in the **eap** playbook, the updated yml configuration file will be installed, and the eap service restarted to load it.
+3. When the execution ends successfully, click on the **addressbook** tab and hit the ↻ refresh button
+4. You should be redirected by the application to a login form (which is provided by Single Sign-On)
+5. Login with `user` and the password you selected in the previous challenge.
+6. Welcome to the updated web application using the external authentication mechanism.
+
+.
+
 ✅ Workshop complete
 ===
 Press the `Check` button below once you’ve completed the task. The workshop is completed!
