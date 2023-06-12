@@ -35,7 +35,7 @@ tabs:
 - title: addressbook-external
   type: website
   port: 443
-  url: https://jbcs-eap.${_SANDBOX_ID}/addressbook/
+  url: https://jbcs-eap.${_SANDBOX_ID}.instruqt.io/addressbook/
 difficulty: basic
 timelimit: 600
 ---

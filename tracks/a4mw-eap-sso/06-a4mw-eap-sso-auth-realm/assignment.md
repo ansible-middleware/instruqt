@@ -22,7 +22,7 @@ tabs:
   hostname: control
   path: /editor/
   port: 443
-difficulty: basic
+difficulty: intermediate
 timelimit: 600
 ---
  💡 Auth realm and EAP subsystem

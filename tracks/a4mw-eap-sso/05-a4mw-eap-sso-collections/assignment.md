@@ -51,7 +51,7 @@ tabs:
   hostname: jbcs-eap
   path: /auth/
   port: 443
-difficulty: basic
+difficulty: intermediate
 timelimit: 600
 ---
  💡 Single Sign-On deployment
