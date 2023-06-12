@@ -52,12 +52,12 @@ sudo certbot certonly --nginx -d jbcs-eap.${_SANDBOX_ID}.instruqt.io --agree-tos
 sudo cp /etc/letsencrypt/archive/jbcs-eap.*.instruqt.io/cert1.pem /home/rhel/cert1.pem
 sudo chown rhel\:rhel /home/rhel/cert1.pem
 sudo chmod 644 /home/rhel/cert1.pem
-scp -o StrictHostKeyChecking=no /home/rhel/cert1.pem control:/home/rhel/jbcs-eap.pem
+scp -o StrictHostKeyChecking=no /home/rhel/cert1.pem control:/home/rhel/jbcs-eap.${_SANDBOX_ID}.instruqt.io.crt
 
 sudo cp /etc/letsencrypt/archive/jbcs-eap.*.instruqt.io/privkey1.pem /home/rhel/privkey1.pem
 sudo chown rhel\:rhel /home/rhel/privkey1.pem
 sudo chmod 644 /home/rhel/privkey1.pem
-scp -o StrictHostKeyChecking=no /home/rhel/privkey1.pem control:/home/rhel/jbcs-eap-key.pem
+scp -o StrictHostKeyChecking=no /home/rhel/privkey1.pem control:/home/rhel/jbcs-eap.${_SANDBOX_ID}.instruqt.io.key
 
 
 /usr/bin/postgresql-setup --initdb

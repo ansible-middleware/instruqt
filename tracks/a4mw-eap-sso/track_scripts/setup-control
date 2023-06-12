@@ -125,9 +125,9 @@ su - $USER -c 'git config --global user.name "A4MW Instruqt student"'
 # mv ./jbcs-eap.pem ./jbcs-eap-key.pem /home/rhel/
 # chown rhel:rhel /home/rhel/*.pem
 
-echo "${INSTRUQT_PARTICIPANT_ID}" > /home/rhel/student_id
+echo -n "${INSTRUQT_PARTICIPANT_ID}" > /home/rhel/student_id
 
-echo "${_SANDBOX_ID}" > /home/rhel/sandbox_id
+echo -n "${_SANDBOX_ID}" > /home/rhel/sandbox_id
 
 # Use playbook to setup environment
 /bin/ansible-playbook /tmp/setup-scripts/controller-setup.yml -vvv --tags setup-env
