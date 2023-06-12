@@ -25,7 +25,6 @@ tabs:
 difficulty: basic
 timelimit: 600
 ---
----
  💡 Auth realm and EAP subsystem
 ===
 #### Estimated time to complete: *20 minutes*<p>
@@ -43,8 +42,123 @@ timelimit: 600
 ☑️ Task 2 - Create a realm playbook
 ===
 
-☑️ Task 3 - Configure the EAP keycloak subsystem
+1. In the editor page, make sure you are in the EXPLORER view, by pressing **Ctrl-Shift-E** or clicking on the first button on the left button bar.
+2. Click **File** menu, then **New File..**
+3. In the dialog that opens, type **sso_realm.yml**, **Enter**
+4. Make sure the path is **/home/rhel/eap-sso/sso_realm.yml** and click **OK**
+5. You should have now an empty file editor tag, named **sso_realm.yml**
+6. Paste the following contents:
+```
+---
+- name: Playbook for rhsso Hosts
+  hosts: sso
+  become: true
+  tasks:
+    - name: "Run the realm configuration"
+      ansible.builtin.include_role:
+        name: redhat.sso.sso_realm
+        apply:
+          delegate_to: "{{ ansible_play_hosts | first }}"
+          run_once: true
+      vars:
+        sso_admin_password: "{{ admin_pass }}"
+        sso_realm: addressbook
+        sso_clients: "{{ realm_clients }}"
+```
+   The playbook above invokes the  **sso_realm** role of the **redhat.sso** collection. We pass the `sso_admin_password` parameter, like in the previous Challenge. We also pass the name for the realm in the `sso_realm` parameters, and the configuration for it which will be read from the `realm_clients` variable which we will define in group_vars.
+  
+7. Type **Ctrl-S** to save, or use the **File**/**Save** menu
+8. Locate the **deploy.yml** file, and click to open it in a new editor tab
+9. To add the newly create playbook in the main playbook, on line 6 (after sso.yml and before eap.yml), type:
+```
+- import_playbook: sso_realm.yml
+```
+
+10. Type **Ctrl-S** to save, or use the **File**/**Save** menu
+
+Ok, we now have the playbooks in; let's configure the collection in the next challenge.
+
+☑️ Task 3 - Configure the SSO realm client
 ===
+
+The client for the SSO realm is the addressbook web application; let's configure it.
+
+1. In the editor page, make sure you are in the EXPLORER view, by pressing **Ctrl-Shift-E** or clicking on the first button on the left button bar.
+2. In the EXPLORER panel, expand the **inventory/group_vars** directory, and open the **sso.yml**
+3. You will be presented with a new editor tab contining the existing **sso** group variables; append the following at the end of the file:
+```
+realm_clients:
+  - name: addressbook
+    client_id: addressbook
+    roles:
+      - admin_role
+      - user_role
+    realm: addressbook
+    public_client: true
+    web_origins: '+'
+    users:
+      - username: administrator
+        email: ansible-middleware-core@redhat.com
+        firstName: Admin
+        lastName: Admin
+        password: password
+        client_roles:
+          - client: addressbook
+            role: admin_role
+            realm: addressbook
+          - client: addressbook
+            role: user_role
+            realm: addressbook
+      - username: user
+        email: ggraziol@redhat.com
+        firstName: Guido
+        lastName: Grazioli
+        password: password
+        client_roles:
+          - client: addressbook
+            role: user_role
+            realm: addressbook
+```
+
+   The above configuration will create an "addressbook" client in the "addressbook" realm, with two roles: `admin_role` and `user_role`. Then it will create two users: `administrator` with both roles, and `user`, beloging to the `user_role` only.
+
+4. Find the `password` for the users, and update with a password of your choice.
+5. Type **Ctrl-S** to save, or use the **File**/**Save** menu
+
+
+☑️ Task 4 - Configure the EAP keycloak subsystem
+===
+
+Now that we have Single Sign-On deployed and the addressbook realm configured, we will need to update the JBoss EAP configuration to integrate on it, via its `keycloak` subsystem. To do so, perform the following steps:
+
+1. In the editor page, make sure you are in the EXPLORER view, by pressing **Ctrl-Shift-E** or clicking on the first button on the left button bar.
+2. In the EXPLORER panel, expand the **templates** directory, and open the **eap_ymlconfig.yml.j2** file.
+3. Append the following at the end of the file:
+```
+    keycloak:
+      secure-deployment:
+        addressbook.war:
+          realm: addressbook
+          resource: addressbook
+          auth-server-url: {{ sso_frontend_url }}/
+          ssl-required: external
+          disable-trust-manager: true
+          use-resource-role-mappings: true
+          verify-token-audience: true
+          public-client: true
+```
+
+**IMPORTANT**: mind the indent! The `keycloak` key should have the same indent of the `datasources` key on line 21.
+
+4.Type **Ctrl-S** to save, or use the **File**/**Save** menu
+
+☑️ Task 5 - Commit changes
+===
+
+1. Switch to the **Source Control** git dialog (third icon on the left column, should have a blue notification)
+2. Fill the dialog text called **Message** with `Add SSO REALM playbook`
+3. Click on the blue **Commit** button to apply the changes. You will notice that while the editor suggests to synchronize changes (ie. a git push) to the remote repository, however this operation is not necessary for our workshop.
+
 
 
 ✅ Next Challenge

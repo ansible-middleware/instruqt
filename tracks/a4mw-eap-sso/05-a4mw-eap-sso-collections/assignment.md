@@ -75,6 +75,7 @@ timelimit: 600
       sso_admin_password: "redhat1!but12long"
 ```
    The playbook above does nothing else than invoking the main **sso** install role of the **redhat.sso** collection. We pass a parameter just under the role, `sso_admin_password` variable, in that way and not in the group_vars, because for added security, the collection **does NOT** provide a default for the administrator password, and forces the user to define one (a strong one). Generally, you would not type the parameter value `redhat1!but12long` here, but rely on some encryption secret management facility instead, like Ansible vaults. However, this is out of the scope of this workshop, and we will leave that to you.
+
 7. Type **Ctrl-S** to save, or use the **File**/**Save** menu
 8. Locate the **deploy.yml** file, and click to open it in a new editor tab
 9. To add the newly create playbook in the main playbook, on line 6 (after jbcs.yml and before eap.yml), type:
@@ -163,7 +164,7 @@ If not logged in or your session expired, you can login with the following crede
 2. Note that all former tasks should be ok (green) or skip (cyan), except now there will be a whole new playbook running, starting around line 199.
 3. Notice how the playbook is running simultaneously against the two **sso1** and **sso2** hosts this time.
 4. Note, around line 508, how the restart of the SSO nodes is not simultaneous; instead, they are serially restarted to provide no-downtime cluster restarts
-4. On the window top bar, locate and click the **JBCS-mcm** tab
+4. When the execution is successfully completed, on the window top bar, locate and click the **JBCS-mcm** tab, and click the ↻ 'refresh' button on the right side of the top bar
 5. The page should show **mod_cluster/1.3.16.Final-10** in the heading. This means JBCS is operational; if it does not, try to click the ↻ 'refresh' button on the right side of the top bar
 6. In page content, you should read in **Node sso1 (ajp://a.b.c.d:8009):** and **Node sso2 (ajp://a.b.c.d:8009):**. This means SSO is operational, and attached to JBCS modcluster (reverse proxy) facility.
 7. On the window top bar, locate and click the **SSO-console** tab, and click the ↻ 'refresh' button on the right side of the top bar
