@@ -34,8 +34,24 @@ gpgcheck=0
 EOL
 cat /etc/yum.repos.d/centos8-appstream.repo'
 
+sudo bash -c 'cat >/etc/yum.repos.d/epel.repo <<EOL
+[epel]
+name=Extra Packages for Enterprise Linux 8 - x86_64
+metalink=https://mirrors.fedoraproject.org/metalink?repo=epel-8&arch=x86_64&infra=\$infra&content=\$contentdir
+enabled=1
+gpgcheck=0
+countme=1
+gpgkey=file:///etc/pki/rpm-gpg/RPM-GPG-KEY-EPEL-8
+EOL
+cat /etc/yum.repos.d/epel.repo'
+
 dnf clean all
-dnf install -y  @postgresql
+dnf install -y  @postgresql certbot python3-certbot-nginx
+
+sudo certbot certonly --nginx -d jbcs-eap.${_SANDBOX_ID}.instruqt.io --agree-tos --email ggraziol@redhat.com -n
+#scp -o StrictHostKeyChecking=no cert_key control:/home/rhel/jbcs-eap-key.pem
+#scp -o StrictHostKeyChecking=no cert_pem control:/home/rhel/jbcs-eap.pem
+
 /usr/bin/postgresql-setup --initdb
 systemctl start postgresql
 systemctl stop nginx

@@ -9,6 +9,7 @@ virtualmachines:
   shell: /bin/su - rhel -s /bin/bash
   machine_type: e2-small
   allow_external_ingress:
+  - http
   - https
 - name: sso1
   image: red-hat-mbu/ansible
