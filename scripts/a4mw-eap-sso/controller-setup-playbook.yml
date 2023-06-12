@@ -75,8 +75,8 @@
       ansible.builtin.shell: |
         git config --global user.email "rhel@a4mw.instruqt.local"
         git config --global user.name "A4MW Instruqt student"
-        mv /home/rhel/jbcs-eap-key.pem /home/rhel/eap-sso/roles/certificates/files/jbcs-eap.key
-        mv /home/rhel/jbcs-eap.pem /home/rhel/eap-sso/roles/certificates/files/jbcs-eap.crt
+        cp /home/rhel/jbcs-eap-key.pem /home/rhel/eap-sso/roles/certificates/files/jbcs-eap.key
+        cp /home/rhel/jbcs-eap.pem /home/rhel/eap-sso/roles/certificates/files/jbcs-eap.crt
         git add -A && git commit -m "Add certificates"
       args:
         chdir: /home/rhel/eap-sso
@@ -254,11 +254,6 @@
         - check-all
 
 
-#########################################
-## execution checks // apache service, package, html
-#########################################
-
-
 ## check node1 and node2 individually to register html output?
     - name: Check that apache is working in node1
       ansible.builtin.uri:
@@ -321,3 +316,24 @@
         fail_msg: "The job failed."
       tags:
         - check-jt_apache
+
+#########################################
+####        SOLVE MODE
+#########################################
+
+    - name: Check the template launches successfully
+      awx.awx.job_launch:
+        job_template: 'eap-sso-deploy'
+        wait: true
+      ignore_errors: true
+      register: job_result
+      tags:
+        - solve-all
+    
+    - name: Verify if the job was successful
+      ansible.builtin.assert:
+        that: job_result.status == 'successful'
+        success_msg: "The job was successful."
+        fail_msg: "The job failed."
+      tags:
+        - solve-all
