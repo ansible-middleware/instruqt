@@ -15,6 +15,18 @@ notes:
     ![hub-collections.png](../assets/hub-collections.png)
 
     .
+- type: text
+  contents: |-
+    # Certified collection redhat.sso
+
+    The `redhat.sso` collection, available opn Hybrid Console and Ansible Automation Hub, provides roles that will help us:
+    * Download and install Single Sign-On
+    * Configure the Single Sign-On service in hight availability on two cluster nodes
+    * Create and configure an authentication realm with one client, which will serve authN/autZ for the **addressbook** web application
+
+    ![hub-sso.png](../assets/hub-sso.png)
+
+    .
 tabs:
 - title: Automation controller
   type: service

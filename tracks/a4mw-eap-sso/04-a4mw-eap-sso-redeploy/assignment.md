@@ -14,6 +14,17 @@ notes:
     with a service called Red Hat Single Sign-On.
 
     Let's start by updating the Ansible configuration to download and deploy this new version inside EAP, and see how it goes.
+- type: text
+  contents: |-
+    # Quick recap
+
+    To recap where we are, after our first deployment:
+    * We have the host `jbcs-eap` running JBCS as a reverse proxy
+    * The same `jbcs-eap` host also runs JBoss EAP, and we have the web application *addressbook* version 1.0.0 deployed in it. It looks like:
+
+    ![addressbook.png](../assets/addressbook.png)
+
+    Remember it, because we are about to break it 😁
 tabs:
 - title: Automation controller
   type: service
@@ -84,7 +95,7 @@ timelimit: 600
    That is, because an idempotent collection will only report an _ok/not changed_ outcome when the expected configuration is the one which is defined in the scm repository; and reversely, will report a _changed_ state when commits were applied to the scm repository, thus, raising the trust on the _declared configuration in the scm repository being the **single source of truth**_ for the configuration of a live system.
 
    Any changes that wouldn't follow an scm commit, would have to be considered drift: important to account for, and with the added benefit that Ansible will _fix_ the unexpected state pro-actively, applying the expected configuration while reporting the change.
-4. When the execution ends successfully, click on the **addressbook** tab and hit the ↻ refresh button
+4. When the execution ends successfully, click on the **addressbook** tab and hit the ↻ refresh button. Remember we opened the same web application during Challenge 2, just after we executed our first deployment.
 5. You should get an error, likely **Forbidden**, because the web application deployment failed (in turn, because it requires an authentication service that is not yet deployed: we will configure the deployment of it in the next challenges).
 6. To verify the new version was deployed, switch to the **Terminal** tab in the top menu, and type or paste the command:
    `ssh root@jbcs-eap grep WFLYSRV0016 /opt/jboss_eap/jboss-eap-7.4/standalone/log/server.log`

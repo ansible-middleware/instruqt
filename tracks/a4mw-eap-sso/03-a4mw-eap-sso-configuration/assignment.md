@@ -38,6 +38,8 @@ timelimit: 600
 Before you start with tasks below, switch to the **editor** tab in the top menu. You can always switch back and forth between the **Automation controller** and **editor** tabs
 in case you want to compare the configuration from the two different prespectives.
 
+**Note**: in the editor source pages, sometimes the code linter may underline some code in red, and show the error: `the role '<namespace.collection.role>' was not found in <a.list.of.paths> ansible-lintsyntax-check[specific]`. It seems the linter is confused by the fact collections are not installed in the control machine, but in the Ansible controller service. Those errors can be completely ignored.
+
 
 ☑️ Task 1 - Load the repository directory in the editor
 ===
