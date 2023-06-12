@@ -78,6 +78,7 @@
         cp /home/rhel/jbcs-eap.pem /home/rhel/eap-sso/roles/certificates/files/jbcs-eap.crt
         cp /home/rhel/student_id /home/rhel/eap-sso/templates/student_id
         cp /home/rhel/sandbox_id /home/rhel/eap-sso/templates/sandbox_id
+        chown rhel /home/rhel/eap-sso/templates/*
         git add -A && git commit -m "Add certificates"
       args:
         chdir: /home/rhel/eap-sso
