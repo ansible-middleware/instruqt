@@ -60,10 +60,20 @@ timelimit: 600
 ===
 
 1. In the **editor** tab, find and open the **inventory/group_vars/eap.yml** file
-2. Update the web application download URL, replacing `app_url: https://github.com/guidograzioli/keycloak/raw/instruqt/addressbook-1.0.0.war` with `app_url: https://github.com/guidograzioli/keycloak/raw/instruqt/addressbook-1.1.0.war`, and save with `Ctrl-s`
-3. Switch to the **Source Control** git dialog (third icon on the left column, should have a blue notification)
-4. Fill the dialog text called **Message** with `Updating web application download URL`
-5. Click on the blue **Commit** button to apply the changes. You will notice that while the editor suggests to synchronize changes (ie. a git push) to the remote repository, however this operation is not necessary for our workshop.
+2. Update the web application download URL, replacing
+```yaml,nocopy
+app_url: https://github.com/guidograzioli/keycloak/raw/instruqt/addressbook-1.0.0.war
+```
+
+with:
+```yaml
+app_url: https://github.com/guidograzioli/keycloak/raw/instruqt/addressbook-1.1.0.war
+```
+
+3. Save with `Ctrl-s`
+4. Switch to the **Source Control** git dialog (third icon on the left column, should have a blue notification)
+5. Fill the dialog text called **Message** with `Updating web application download URL`
+6. Click on the blue **Commit** button to apply the changes. You will notice that while the editor suggests to synchronize changes (ie. a git push) to the remote repository, however this operation is not necessary for our workshop.
 
 
 ☑️ Task 3 - Locate and run the deploy Template

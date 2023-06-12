@@ -77,7 +77,7 @@ timelimit: 600
 4. Make sure the path is **/home/rhel/eap-sso/sso.yml** and click **OK**
 5. You should have now an empty file editor tag, named **sso.yml**
 6. Paste the following contents:
-```
+```yaml
 ---
 - name: Playbook for rhsso Hosts
   hosts: sso
@@ -91,7 +91,7 @@ timelimit: 600
 7. Type **Ctrl-S** to save, or use the **File**/**Save** menu
 8. Locate the **deploy.yml** file, and click to open it in a new editor tab
 9. To add the newly create playbook in the main playbook, on line 6 (after jbcs.yml and before eap.yml), type:
-```
+```yaml
 - import_playbook: sso.yml
 ```
 10. Type **Ctrl-S** to save, or use the **File**/**Save** menu
@@ -106,7 +106,7 @@ Ok, we now have the playbooks in; let's configure the collection in the next cha
 2. In the EXPLORER panel, expand the **inventory/group_vars** directory, and right-click on **group_vars**
 3. In the context menu, choose **New file** and type **sso.yml** followed by **Enter** key
 4. You will be presented with a new editor tab; paste the following in it:
-```
+```yaml
 ---
 # install settings
 sso_offline_install: False

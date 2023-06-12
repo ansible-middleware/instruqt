@@ -48,7 +48,7 @@ timelimit: 600
 4. Make sure the path is **/home/rhel/eap-sso/sso_realm.yml** and click **OK**
 5. You should have now an empty file editor tag, named **sso_realm.yml**
 6. Paste the following contents:
-```
+```yaml
 ---
 - name: Playbook for rhsso Hosts
   hosts: sso
@@ -70,7 +70,7 @@ timelimit: 600
 7. Type **Ctrl-S** to save, or use the **File**/**Save** menu
 8. Locate the **deploy.yml** file, and click to open it in a new editor tab
 9. To add the newly create playbook in the main playbook, on line 6 (after sso.yml and before eap.yml), type:
-```
+```yaml
 - import_playbook: sso_realm.yml
 ```
 
@@ -86,7 +86,7 @@ The client for the SSO realm is the addressbook web application; let's configure
 1. In the editor page, make sure you are in the EXPLORER view, by pressing **Ctrl-Shift-E** or clicking on the first button on the left button bar.
 2. In the EXPLORER panel, expand the **inventory/group_vars** directory, and open the **sso.yml**
 3. You will be presented with a new editor tab contining the existing **sso** group variables; append the following at the end of the file:
-```
+```yaml
 realm_clients:
   - name: addressbook
     client_id: addressbook
@@ -134,7 +134,7 @@ Now that we have Single Sign-On deployed and the addressbook realm configured, w
 1. In the editor page, make sure you are in the EXPLORER view, by pressing **Ctrl-Shift-E** or clicking on the first button on the left button bar.
 2. In the EXPLORER panel, expand the **templates** directory, and open the **eap_ymlconfig.yml.j2** file.
 3. Append the following at the end of the file:
-```
+```yaml
     keycloak:
       secure-deployment:
         addressbook.war:

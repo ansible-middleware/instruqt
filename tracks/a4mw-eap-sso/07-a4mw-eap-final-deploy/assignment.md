@@ -32,6 +32,10 @@ tabs:
   hostname: jbcs-eap
   path: /addressbook/
   port: 443
+- title: addressbook-external
+  type: website
+  port: 443
+  url: https://jbcs-eap.${_SANDBOX_ID}/addressbook/
 difficulty: basic
 timelimit: 600
 ---
