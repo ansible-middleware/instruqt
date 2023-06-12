@@ -7,7 +7,12 @@ teaser: A last job template execution to put everything in order and accomplish 
   mission
 notes:
 - type: text
-  contents: Replace this text with your own text
+  contents: |-
+    # Final Deployment
+
+    The happy ending of a hard working day.
+
+    .
 tabs:
 - title: Automation controller
   type: service
@@ -28,21 +33,20 @@ tabs:
   path: /mcm/
   port: 443
 - title: addressbook
-  type: service
-  hostname: jbcs-eap
-  path: /addressbook/
-  port: 443
-- title: addressbook-external
   type: website
   port: 443
-  url: https://jbcs-eap.${_SANDBOX_ID}.instruqt.io/addressbook/
+  url: https://jbcs-eap-443-$INSTRUQT_PARTICIPANT_ID.env.play.instruqt.com/addressbook/
 difficulty: basic
 timelimit: 600
----
 ---
  💡 Final Deployment
 ===
 #### Estimated time to complete: *10 minutes*<p>
+
+It's time to wrap up everything we did.
+
+We examined Ansible playbooks and deployed middleware services and web application on a multi-host environment. Then we updated the revision control system with a new version of the web application, we added playbooks to deploy a new service and configure it so that such web application could leverage additional middleware services. Lets execute the final result of our work, and get the complete system up and running.
+
 
 ☑️ Task 1 - Locate and run the deploy Template
 ===
@@ -65,7 +69,19 @@ timelimit: 600
 5. Login with `user` and the password you selected in the previous challenge.
 6. Welcome to the updated web application using the external authentication mechanism.
 
-.
+☑️ Task 3 - Final thoughts
+
+So, this chapted was titled 'Final Deployment'; but would it be so?
+
+We have seen that playbook executions can report their final outcome, for each task that has been evaluated or run by Ansible, and as an aggregation of **_changes made_/_no change needed_** actions.
+We have also noticed that the time of execution changes remarkably when executions run on already deployed systems, and no changes where made to the revision control system.
+
+Wouldn't it be wise to setup un automation that continuously, repeatedly runs our playbooks against our live envirnment, confirming the configuration is what it is supposed to be, pro-actively amend and drift from what it was supposed to be; maybe every few minutes?
+
+We think it is. And with the birth of Event-Driven Ansible, this can and will reach even higher levels of control, adding reactive to pro-active behaviours.
+
+Farewell, and thanks for your participation in this workshop!
+
 
 ✅ Workshop complete
 ===

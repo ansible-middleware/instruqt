@@ -1,6 +1,6 @@
 #!/bin/bash
-#
-echo "This is the 06 solve script"
+## solve-inventory
+echo "This is the 07 solve script"
 
 
 git config --global user.email "rhel@a4mw.instruqt.local"
@@ -18,9 +18,6 @@ export CONTROLLER_HOST=localhost
 export CONTROLLER_USERNAME=admin
 export CONTROLLER_PASSWORD='ansible123!'
 export CONTROLLER_VERIFY_SSL=false
-export JBOSSNETWORK_CLIENTID="${JBOSSNETWORK_CLIENTID}"
-export JBOSSNETWORK_API_SECRET="${JBOSSNETWORK_API_SECRET}"
 
 # Playbook run command
 /bin/ansible-playbook /tmp/setup-scripts/controller-setup.yml --tags solve-all -vvv
-
