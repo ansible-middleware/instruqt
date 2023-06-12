@@ -109,9 +109,9 @@ access the output log of the synchonize operation: if you do, remember to go bac
 
 When the syncing is completed, on the tab bar, now click on **Back to Sources**, then the **Hosts** tab, and examine the hosts configured in the inventory:
   * `sso1` and `sso2` will provide the Single Sign-On authentication service, and belong to the `sso` group. The instances are up, but nothing else has been configured.
-  * `jbcs-eap` will execute JBoss Core Services and JBoss Enterprise Application platform. Click on it, then switch to the **Groups** tab and verify it belongs to the `db`, `jbcs`, and `eap` groups. 
+  * `jbcs-eap` will execute JBoss Core Services and JBoss Enterprise Application platform. Click on it, then switch to the **Groups** tab and verify it belongs to the `db`, `jbcs`, and `eap` groups.
 
-A group is a set of hosts that facilitates sharing common variables across hosts: for instance, variables that apply to hosts providing the same service, like **eap**; or hosts that are located in the same environment, like **staging**; or even hosts that are located in the same place, **us-east-1** or **datacenter1** are good examples. Click on the **eap** group and check the **Details** page that opens: the variables shown are the values that have been fetched and synchronized by the job we just launched, and originate from scm repository that we will see in the next Task. 
+A group is a set of hosts that facilitates sharing common variables across hosts: for instance, variables that apply to hosts providing the same service, like **eap**; or hosts that are located in the same environment, like **staging**; or even hosts that are located in the same place, **us-east-1** or **datacenter1** are good examples. Click on the **eap** group and check the **Details** page that opens: the variables shown are the values that have been fetched and synchronized by the job we just launched, and originate from scm repository that we will see in the next Task.
 
 
 ☑️ Task 3 - Explore the Projects section
