@@ -325,11 +325,14 @@
       awx.awx.job_launch:
         job_template: 'eap-sso-deploy'
         wait: true
+        extra_vars:
+          rhn_username: "{{ lookup('env', 'JBOSSNETWORK_CLIENTID') }}"
+          rhn_password: "{{ lookup('env', 'JBOSSNETWORK_API_SECRET') }}"
       ignore_errors: true
       register: job_result
       tags:
         - solve-all
-    
+
     - name: Verify if the job was successful
       ansible.builtin.assert:
         that: job_result.status == 'successful'
