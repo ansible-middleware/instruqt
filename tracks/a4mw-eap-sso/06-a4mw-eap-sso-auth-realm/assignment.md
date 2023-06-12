@@ -7,7 +7,12 @@ teaser: Use the redhat.sso collection sso_realm role to fully configure an authe
   realm
 notes:
 - type: text
-  contents: Replace this text with your own text
+  contents: |-
+    # Single Sign-On configuration
+
+    We deployed a Single Sign-On service on two nodes, in HA configuration. Now we need to configure resources in it that enables an external application to consume authentication of users.
+
+    The `redhat.sso` collection will come handy again as it provides a role specifically for this purpose.
 tabs:
 - title: Automation controller
   type: service

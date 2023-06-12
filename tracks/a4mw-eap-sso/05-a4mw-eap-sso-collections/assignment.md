@@ -47,10 +47,9 @@ tabs:
   path: /mcm/
   port: 443
 - title: SSO-console
-  type: service
-  hostname: jbcs-eap
-  path: /auth/
-  port: 443
+  type: website
+  url: https://jbcs-eap.${_SANDBOX_ID}.instruqt.io/auth/
+  new_window: true
 difficulty: intermediate
 timelimit: 600
 ---
@@ -179,8 +178,10 @@ If not logged in or your session expired, you can login with the following crede
 4. When the execution is successfully completed, on the window top bar, locate and click the **JBCS-mcm** tab, and click the ↻ 'refresh' button on the right side of the top bar
 5. The page should show **mod_cluster/1.3.16.Final-10** in the heading. This means JBCS is operational; if it does not, try to click the ↻ 'refresh' button on the right side of the top bar
 6. In page content, you should read in **Node sso1 (ajp://a.b.c.d:8009):** and **Node sso2 (ajp://a.b.c.d:8009):**. This means SSO is operational, and attached to JBCS modcluster (reverse proxy) facility.
-7. On the window top bar, locate and click the **SSO-console** tab, and click the ↻ 'refresh' button on the right side of the top bar
+7. On the window top bar, locate and click the **SSO-console** tab, which will open in a new window because Single Sign-On refuses to be opened in an html frame for security reasons.
 8. You should be presented with the SSO frontpage
+9. Click the 'Administration console' link on the left box
+10. Login with username `admin` and password `redhat1!but12long` (as we set in the SSO group_vars file). You're welcome to navigate the service.
 
 
 

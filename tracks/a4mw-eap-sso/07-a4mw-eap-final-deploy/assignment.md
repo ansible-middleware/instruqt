@@ -33,10 +33,9 @@ tabs:
   path: /mcm/
   port: 443
 - title: addressbook
-  type: service
-  hostname: jbcs-eap
-  path: /addressbook/
-  port: 443
+  type: website
+  url: https://jbcs-eap.${_SANDBOX_ID}.instruqt.io/addressbook/
+  new_window: true
 difficulty: basic
 timelimit: 600
 ---
@@ -72,7 +71,7 @@ We examined Ansible playbooks and deployed middleware services and web applicati
 
 ☑️ Task 3 - Final thoughts
 
-So, this chapted was titled 'Final Deployment'; but would it be so?
+So, this chapter was titled 'Final Deployment'; but would it be so?
 
 We have seen that playbook executions can report their final outcome, for each task that has been evaluated or run by Ansible, and as an aggregation of **_changes made_/_no change needed_** actions.
 We have also noticed that the time of execution changes remarkably when executions run on already deployed systems, and no changes where made to the revision control system.
