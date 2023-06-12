@@ -66,7 +66,7 @@ timelimit: 600
         sso_clients: "{{ realm_clients }}"
 ```
    The playbook above invokes the  **sso_realm** role of the **redhat.sso** collection. We pass the `sso_admin_password` parameter, like in the previous Challenge. We also pass the name for the realm in the `sso_realm` parameters, and the configuration for it which will be read from the `realm_clients` variable which we will define in group_vars.
-  
+
 7. Type **Ctrl-S** to save, or use the **File**/**Save** menu
 8. Locate the **deploy.yml** file, and click to open it in a new editor tab
 9. To add the newly create playbook in the main playbook, on line 6 (after sso.yml and before eap.yml), type:
