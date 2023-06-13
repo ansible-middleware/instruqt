@@ -78,22 +78,16 @@ The screen on the left shows the login screen. You can log in with the following
 ☑️ Task 1 - Explore the Dashboard
 ===
 
-Explore the Dashboard view.  Currently the Dashboard wont show much information since it has just been deployed, but you will be able to visit again once you finished the lab and notice the difference.
+Explore the Dashboard view.  Currently the Dashboard won't show much information since it has just been deployed, but you will be able to visit again once you finished the lab and notice the difference.
 
 You will find the following buttons:
 
-* Hosts
-  The virtual machines that can be managed by Automation controller
-* Failed hosts
-  Virtual machines that are added to Automation controller, but cannot be accessed
-* Inventories
-  Groupings of hosts that can be targeted by Ansible playbooks / Job Templates
-* Inventory sync fail
-  Jobs that synchronize Host state with Inventory state that failed
-* Projects
-  Groups of ansible playbooks that are hosted in the same scm repository
-* Projects sync fail
-  Jobs that synchronize scm state with Projects state that failed
+* **Hosts**: hosts that are added and can be managed by Automation controller
+* **Failed hosts**: hosts that are added to Automation controller, but cannot be accessed
+* **Inventories**: groups of hosts that can be targeted by Ansible playbooks / Job Templates
+* **Inventory sync failures**: jobs that synchronize Host state with Inventory state that failed
+* **Projects**: groups of ansible playbooks that are hosted in the same scm repository
+* **Projects sync failures**: jobs that synchronize scm state with Projects state that failed
 
 
 ☑️ Task 2 - Explore the Inventories section
@@ -107,7 +101,7 @@ In particular, the **Sources** tab page will list the inventories that are dinam
 points to the `inventory/inventory` file inside the **eap-sso** project.
 
 Now click the **Sync** button: this will start the syncing between the hosts available to Ansible controller and those defined in the project git repository inventory. You will notice the field *Last Job Status* now reports **Pending** status, and after a few seconds **Running**; and eventually it will report **Successful** after the execution terminates. You can click on the **Pending** link to
-access the output log of the synchonize operation: if you do, remember to go back to **eap-sso-source** inventory source page before going further ahead.
+access the output log of the synchronize operation: if you do, remember to go back to **eap-sso-source** inventory source page before going further ahead.
 
 When the syncing is completed, on the tab bar, now click on **Back to Sources**, then the **Hosts** tab, and examine the hosts configured in the inventory:
   * `sso1` and `sso2` will provide the Single Sign-On authentication service, and belong to the `sso` group. The instances are up, but nothing else has been configured.

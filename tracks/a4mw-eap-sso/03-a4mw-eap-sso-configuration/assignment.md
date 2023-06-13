@@ -12,7 +12,7 @@ notes:
 
     Now that base services are deployed, we will stop a minute and fire up the source code editor, in order to take a look at the Ansible resources which allowed us to successfully execute our operations
 
-    .
+    ![editor](../assets/editor.png)
 tabs:
 - title: Automation controller
   type: service

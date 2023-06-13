@@ -4,3 +4,5 @@ export CONTROLLER_HOST=localhost
 export CONTROLLER_USERNAME=admin
 export CONTROLLER_PASSWORD='ansible123!'
 export CONTROLLER_VERIFY_SSL=false
+
+cd /home/rhel/eap-sso && sed -ie 's/1.0.0/1.1.0/' inventory/group_vars/eap.yml && git add inventory/group_vars/eap.yml && git commit -m "Update web application to 1.1.0"

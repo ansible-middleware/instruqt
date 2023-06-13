@@ -1,11 +1,32 @@
 #!/bin/sh
 #
-# This script runs when the platform check the challenge.
-#
-# The platform determines if the script was successful using the exit code of this
-# script. If the exit code is not 0, the script fails. 
-#
 
-echo "This is the check script"
+grep -q 'import_playbook: sso_realm.yml' /home/rhel/eap-sso/deploy.yml
+if [ $? -ne 0 ]; then
+  echo "FAIL: Your challenge failed because the file deploy.yml in the git repository has not been correctly updated"
+  exit 1
+fi
 
+grep -q 'secure-deployment:' /home/rhel/eap-sso/templates/eap_ymlconfig.yml.j2
+if [ $? -ne 0 ]; then
+  echo "FAIL: Your challenge failed because the file templates/eap_ymlconfig.yml.j2 in the git repository has not been correctly updated"
+  exit 1
+fi
+
+grep -q 'realm_clients:' /home/rhel/eap-sso/inventory/group_vars/sso.yml
+if [ $? -ne 0 ]; then
+  echo "FAIL: Your challenge failed because the file inventory/group_vars/sso.yml in the git repository has not been correctly updated"
+  exit 1
+fi
+
+if [ ! -f /home/rhel/eap-sso/sso_realm.yml ]; then
+  echo "FAIL: Your challenge failed because the file sso_realm.yml has not been created"
+  exit 1
+fi
+
+grep -q 'name: redhat.sso.sso_realm' /home/rhel/eap-sso/sso_realm.yml
+if [ $? -ne 0 ]; then
+  echo "FAIL: Your challenge failed because the file sso_realm.yml in the git repository has not been correctly updated"
+  exit 1
+fi
 exit 0

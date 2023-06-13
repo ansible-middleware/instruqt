@@ -1,4 +1,13 @@
 #!/bin/bash
-set -e
 
+cd /home/rhel/eap-sso && git log -1 -p -- inventory/group_vars/eap.yml | tail -n 3 | grep -q "+app_url: https://github.com/guidograzioli/keycloak/raw/instruqt/addressbook-1.1.0.war"
+if [ $? -ne 0 ]; then
+  echo "FAIL: Your challenge failed because of the inventory/group_vars/eap.yml file in the git repository has not been correctly updated"
+  exit 1
+fi
 
+cd /home/rhel/eap-sso && git log -1 -p -- inventory/group_vars/eap.yml | tail -n 3 | grep -q -- '[-]app_url: https://github.com/guidograzioli/keycloak/raw/instruqt/addressbook-1.0.0.war'
+if [ $? -ne 0 ]; then
+  echo "FAIL: Your challenge failed because of the inventory/group_vars/eap.yml file in the git repository has not been correctly updated"
+  exit 1
+fi

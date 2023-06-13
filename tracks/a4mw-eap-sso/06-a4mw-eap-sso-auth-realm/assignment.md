@@ -13,6 +13,8 @@ notes:
     We deployed a Single Sign-On service on two nodes, in HA configuration. Now we need to configure resources in it that enables an external application to consume authentication of users.
 
     The `redhat.sso` collection will come handy again as it provides a role specifically for this purpose.
+
+    ![hub-sso-realm.png](../assets/hub-sso-realm.png)
 tabs:
 - title: Automation controller
   type: service
@@ -101,6 +103,7 @@ realm_clients:
     realm: addressbook
     public_client: true
     web_origins: '+'
+    redirect_uris: '*'
     users:
       - username: administrator
         email: ansible-middleware-core@redhat.com
@@ -115,7 +118,7 @@ realm_clients:
             role: user_role
             realm: addressbook
       - username: user
-        email: ggraziol@redhat.com
+        email: your.email@address.com
         firstName: Guido
         lastName: Grazioli
         password: password
@@ -127,8 +130,9 @@ realm_clients:
 
    The above configuration will create an "addressbook" client in the "addressbook" realm, with two roles: `admin_role` and `user_role`. Then it will create two users: `administrator` with both roles, and `user`, beloging to the `user_role` only. The **addressbook** web application version 1.1.0, which we deployed, will authorize users that belong to the `user_role` role.
 
-4. Find the `password` for the users, and update with a password of your choice.
-5. Type **Ctrl-S** to save, or use the **File**/**Save** menu
+4. Find the `password` for the users, and update with a password of your choice
+5. Update the `firstName` and `lastName` of the `user` user with your own
+6. Type **Ctrl-S** to save, or use the **File**/**Save** menu
 
 
 ☑️ Task 4 - Configure the EAP keycloak subsystem

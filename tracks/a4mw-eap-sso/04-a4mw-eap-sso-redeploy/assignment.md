@@ -72,7 +72,7 @@ app_url: https://github.com/guidograzioli/keycloak/raw/instruqt/addressbook-1.1.
 
 3. Save with `Ctrl-s`
 4. Switch to the **Source Control** git dialog (third icon on the left column, should have a blue notification)
-5. Fill the dialog text called **Message** with `Updating web application download URL`
+5. Fill the dialog text called **Message** with `Update web application to 1.1.0`
 6. Click on the blue **Commit** button to apply the changes. You will notice that while the editor suggests to synchronize changes (ie. a git push) to the remote repository, however this operation is not necessary for our workshop.
 
 

@@ -64,21 +64,24 @@ We examined Ansible playbooks and deployed middleware services and web applicati
 
 1. Follow the job execution output up to the end
 2. Note that all tasks should be ok (green) or skip (cyan), except the new **sso_realm** playbook will be executed, and in the **eap** playbook, the updated yml configuration file will be installed, and the eap service restarted to load it.
-3. When the execution ends successfully, click on the **addressbook** tab and hit the ↻ refresh button
-4. You should be redirected by the application to a login form (which is provided by Single Sign-On)
-5. Login with `user` and the password you selected in the previous challenge.
-6. Welcome to the updated web application using the external authentication mechanism.
+3. When the execution ends successfully, click on the **addressbook** tab: it will open a new browser window
+4. You should be redirected by the application to a login form, which is provided by Single Sign-On
+5. Login with `user` and the password you selected in the previous challenge
+6. The successful login in SSO loads in the session the user details, then SSO redirects back to the JBoss EAP web application
+7. Welcome to the updated web application using the external authentication mechanism. EAP loaded the user attributes from the session, allowed to access the webapplication because the `user` account was found in the `user_role` role. Finally, if you check the top right corner, the addressbook web application also loaded the user details in the session to show your name. When you are done, close the browser window and come back here, for some final reasonings.
+
 
 ☑️ Task 3 - Final thoughts
+===
 
 So, this chapter was titled 'Final Deployment'; but would it be so?
 
 We have seen that playbook executions can report their final outcome, for each task that has been evaluated or run by Ansible, and as an aggregation of **_changes made_/_no change needed_** actions.
 We have also noticed that the time of execution changes remarkably when executions run on already deployed systems, and no changes where made to the revision control system.
 
-Wouldn't it be wise to setup un automation that continuously, repeatedly runs our playbooks against our live envirnment, confirming the configuration is what it is supposed to be, pro-actively amend and drift from what it was supposed to be; maybe every few minutes?
+Wouldn't it be wiser to setup un automation that continuously, repeatedly runs our playbooks against our live envirnment, confirming the configuration is what it is supposed to be, pro-actively amend and drift from what it was supposed to be; maybe every few minutes?
 
-We think it is. And with the birth of Event-Driven Ansible, this can and will reach even higher levels of control, adding reactive to pro-active behaviours.
+We think it is. And with the birth of Event-Driven Ansible, this can and will reach even higher levels of control, adding reactive behaviours to pro-active ones.
 
 Farewell, and thanks for your participation in this workshop!
 

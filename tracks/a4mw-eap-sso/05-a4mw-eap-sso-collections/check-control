@@ -8,4 +8,14 @@
 
 echo "This is the check script"
 
+if ! curl -k https://jbcs-eap/mcm | grep '/addressbook'; then
+ echo "FAIL: addressbook application is not deployed in JBoss EAP; Please try again"
+ exit 1
+fi
+
+if ! curl -k https://jbcs-eap/mcm | grep '/auth'; then
+ echo "FAIL: Single Sign-On is not attached to JBCS modcluster; Please try again"
+ exit 1
+fi
+
 exit 0

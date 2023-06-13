@@ -13,8 +13,6 @@ notes:
     find something else that can help us:
 
     ![hub-collections.png](../assets/hub-collections.png)
-
-    .
 - type: text
   contents: |-
     # Certified collection redhat.sso
@@ -25,8 +23,6 @@ notes:
     * Create and configure an authentication realm with one client, which will serve authN/autZ for the **addressbook** web application
 
     ![hub-sso.png](../assets/hub-sso.png)
-
-    .
 tabs:
 - title: Automation controller
   type: service
@@ -181,7 +177,7 @@ If not logged in or your session expired, you can login with the following crede
 7. On the window top bar, locate and click the **SSO-console** tab, which will open in a new window because Single Sign-On refuses to be opened in an html frame for security reasons.
 8. You should be presented with the SSO frontpage
 9. Click the 'Administration console' link on the left box
-10. Login with username `admin` and password `redhat1!but12long` (as we set in the SSO group_vars file). You're welcome to navigate the service.
+10. Login with username `admin` and password `redhat1!but12long` (as we set in the SSO group_vars file). You're welcome to navigate the service; when you are done, close the Administrator console window and come back here.
 
 
 

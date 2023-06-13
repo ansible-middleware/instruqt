@@ -15,3 +15,8 @@ if ! $CMD --tags=check-inventory -vv; then
  echo "FAIL: ${INVENTORY} inventory not found. Remember it's case-sensitive! Please try again."
  exit 1
 fi
+
+if ! curl -k https://jbcs-eap/mcm | grep '/addressbook'; then
+ echo "FAIL: addressbook application is not deployed in JBoss EAP; Please try again"
+ exit 1
+fi

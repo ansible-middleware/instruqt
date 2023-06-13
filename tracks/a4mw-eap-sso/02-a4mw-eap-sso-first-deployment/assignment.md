@@ -92,24 +92,32 @@ Let's inspect some tasks that run, producing the output at or around the followi
   * line 16: add any missing package (for each host) to a list
   * line 21: execute the package manager to install missing packages
 * Download JBCS install zipfiles
-  * line 131: contact the JBossnetwork API to find an authenticated download URL
-  * line 137: perform the download
+  * line 130: contact the JBossnetwork API to find an authenticated download URL
+  * line 135: perform the download
 * Configure and install JBCS
-  * line 149: extract zipfile
-  * line 192: configure TLS/SSL
-  * line 198: configure the reverse proxy
+  * line 146: extract zipfile
+  * line 190: configure TLS/SSL
+  * line 196: configure the reverse proxy
 * Start and verify JBCS systemd unit
-  * lines 210-232
+  * lines 210-230
 * Download JBoss EAP install zipfiles
-  * line 324: contact the JBossnetwork API to find an authenticated download URL
-  * line 334: perform the download
-  * line 401: contact the JBossnetwork API to find an authenticated download URL for the patch
-  * line 414: perform the download of the cumulative patch
+  * line 320: contact the JBossnetwork API to find an authenticated download URL
+  * line 330: perform the download
+  * line 392: contact the JBossnetwork API to find an authenticated download URL for the patch
+  * line 410: perform the download of the cumulative patch
+  * line 464: patch JBoss 7.4 with CP 7.4.x
 * Install JDBC postgresql module in JBoss EAP
   * line 620: download the library JAR
   * line 626: deploy the module
 * Deploy the addressbook warfile
-  * lines 757-758
+  * lines 760-770
+
+
+**Note**: it has been reported that the execution can report an ERROR just after the job template ends successfully; if you read in the last line of the log:
+```
+ERRO[0330] Waiting for container <container-checksum> : getting exit code of container <container-checksum> from DB: no such exit code (container in state stopped)
+```
+you can ignore the error. If you wish, go back to Task 1, and relaunch the template: the problem never reproduced a second time.
 
 
 ☑️ Task 3 - Verify the services are deployed
