@@ -7,7 +7,7 @@ teaser: Let's explore the dashboard, inventory and projects!
 notes:
 - type: text
   contents: |-
-    # Welcome to the Ansible for Middleware workshop
+    # Welcome to the Effective Middleware Automation Using Ansible workshop
 
     In this interactive workshop we will demonstrate how easy it is to use Ansible Automation Platform and the A4MW collections to setup complex environments, perform deployments,
     and operate day 0-1-2 tasks.
@@ -18,6 +18,8 @@ notes:
     # Ansible automation controller
 
     Meet Ansible automation controller, the web-based UI interface for **Red Hat Ansible Automation Platform**.
+
+    ![aap-controller.png](../assets/aap-controller.png)
 
     Let's explore the web-UI interface, in order to get comfortable with what is already configured in.
 - type: text

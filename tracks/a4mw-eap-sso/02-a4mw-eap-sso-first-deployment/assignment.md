@@ -7,9 +7,9 @@ teaser: Launching the job template to deploy JBCS and EAP services
 notes:
 - type: text
   contents: |-
-    # Our first deployments
+    # Our first deployment
 
-    In this challenge, now that our project setup is finalized, we will start our first deployment.
+    In this challenge, now that the project setup is finalized, we will start our first deployment.
 
     ![job-output.png](../assets/job-output.png)
 - type: text

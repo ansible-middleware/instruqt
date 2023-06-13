@@ -7,22 +7,22 @@ teaser: Learn how to automate the deployment of Red Hat Single Sign-On using Ans
 description: |-
   # Effective Middleware Automation Using Ansible
 
-  ![a4mw](https://raw.githubusercontent.com/ansible-middleware/instruqt/main/assets/icons/a4mw.png)
   Welcome to our interactive workshop on Middleware Automation Using Ansible; during the workshop, we will be using Ansible automation controller,
   the web-based UI interface for Red Hat Ansible Automation Platform, together with Ansible for Middleware collections, to deploy multiple services, including Red Hat JBoss Enterprise Application
   Platform, Red Hat Single Sign-On, and Red Hat JBoss Core Services.
 
-  # Deploy Red Hat Single Sign-On with Ansible for Middleware collections
+  # Deploy runtimes with Ansible for Middleware collections
 
-  In this workshop scenario, we will find a web application deployed on JBoss EAP and served via JBoss Core Services: after learning how Ansible and the Middleware Automation collections
+  <img src="https://raw.githubusercontent.com/ansible-middleware/instruqt/main/assets/icons/a4mw.png" alt="Ansible4MiddleWare" align="left" style="width: 110px; margin-right: 20px;"> In this
+  workshop scenario, we will find a web application deployed on JBoss EAP and served via JBoss Core Services: after learning how Ansible and the Middleware Automation collections
   can help to setup such an environment, we will install and deploy an additional highly available authentication service, Red Hat Single Sign-On, using an additional certified
   collection, and we will update the deployment of the web application with a new version requiring an external authentication mechanism.
-
-  ![scenario](https://raw.githubusercontent.com/ansible-middleware/instruqt/main/assets/scenario.png)
 
   This workshop is useful for both experienced Ansible users and beginners. No prior experience is required, although understanding playbook development concepts will help.
 
   We will create an inventory to manage our servers, import our playbooks through the Projects, create Job Templates to run the playbooks and finally, update the web application.
+
+  ![scenario](https://raw.githubusercontent.com/ansible-middleware/instruqt/main/assets/scenario.png)
 
   This workshop covers the following topics for automation controller and middleware automation collections:
 
@@ -31,7 +31,7 @@ description: |-
   * Deploying a stack of services to target instances using job templates
     * Red Hat JBoss Core Services
     * Red Hat Enterprise Application Platform
-  * Making changes to collection configuration to reiterate deployments
+  * Making changes to collection configuration and reiterate deployments
     * Red Hat Single Sign-On
     * Red Hat Enterprise Application Platform
 
@@ -56,4 +56,4 @@ lab_config:
   overlay: false
   width: 33
   position: right
-checksum: "13313098392079509195"
+checksum: "6490196288743858373"
