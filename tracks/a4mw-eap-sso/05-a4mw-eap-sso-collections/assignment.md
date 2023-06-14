@@ -17,7 +17,7 @@ notes:
   contents: |-
     # Certified collection redhat.sso
 
-    The `redhat.sso` collection, available opn Hybrid Console and Ansible Automation Hub, provides roles that will help us:
+    The `redhat.sso` collection, available on the Hybrid Console and Ansible Automation Hub, provides roles that will help us:
     * Download and install Single Sign-On
     * Configure the Single Sign-On service in hight availability on two cluster nodes
     * Create and configure an authentication realm with one client, which will serve authN/autZ for the **addressbook** web application
@@ -66,7 +66,7 @@ timelimit: 600
 ☑️ Task 2 - Add a Single Sign-On playbook
 ===
 
-1. In the editor page, make sure you are in the EXPLORER view, by pressing **Ctrl-Shift-E** or clicking on the first button on the left button bar.
+1. In the editor page, make sure you are in the EXPLORER view, by pressing **Ctrl-Shift-E** or clicking on the first button on the left button bar. Then select the **deploy.yml** file
 2. Click **File** menu, then **New File..**
 3. In the dialog that opens, type **sso.yml**, **Enter**
 4. Make sure the path is **/home/rhel/eap-sso/sso.yml** and click **OK**

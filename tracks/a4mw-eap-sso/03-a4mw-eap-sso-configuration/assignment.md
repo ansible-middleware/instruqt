@@ -82,6 +82,14 @@ in case you want to compare the configuration from the two different prespective
   * This file contains configuration that is applied to EAP subsystems; declarative configuration of EAP components during its bootstrap phase is a new feature which has been made available, in Techincal Preview, since Wildfly 26.0.1/JBoss EAP 7.4.5, and will be Generally Available in the upcoming EAP 8.0. The module providing the feature is called **YAML Configuration Extension**, and the **redhat.eap** collection provides both the automatic install for the cumulative patch version needed (switch back to the **inventory/group_vars/eap.yml** file) via the `eap_apply_cp` variable, and the steps to enable it via the `eap_enable_yml_config` variable. Also, note that when `eap_apply_cp` is set to `True`, it is possible to pass the collection a specific patch version (like, for instance, `eap_patch_version: 7.4.7`) to be applied; otherwise, letting the variable undefined instructs the collection to determine what is the most recent patch version released at the time of execution.
 
 
+☑️ Task 4 - Inspect the main playbook
+===
+
+1. Finally, locate the file **deploy.yml** in the directory tree
+2. As you may remember, that is the playbook invoked in the Ansible controller Job Template that we executed in the previous challenge
+3. Note the order in which playbooks are imported.
+
+
 
 ✅ Next Challenge
 ===
