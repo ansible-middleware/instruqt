@@ -79,7 +79,7 @@ So, this chapter was titled 'Final Deployment'; but would it be so?
 We have seen that playbook executions can report their final outcome, for each task that has been evaluated or run by Ansible, and as an aggregation of **_changes made_/_no change needed_** actions.
 We have also noticed that the time of execution changes remarkably when executions run on already deployed systems, and no changes where made to the revision control system.
 
-Wouldn't it be wiser to setup un automation that continuously, repeatedly runs our playbooks against our live envirnment, confirming the configuration is what it is supposed to be, pro-actively amend and drift from what it was supposed to be; maybe every few minutes?
+Wouldn't it be wiser to setup an automation that continuously, repeatedly runs our playbooks against our live envirnment, confirming the configuration is what it is expected to be, and/or pro-actively amend any drift from what it was supposed to be? maybe every few minutes?
 
 We think it is. And with the birth of Event-Driven Ansible, this can and will reach even higher levels of control, adding reactive behaviours to pro-active ones.
 

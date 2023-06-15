@@ -72,8 +72,9 @@ app_url: https://github.com/guidograzioli/keycloak/raw/instruqt/addressbook-1.1.
 
 3. Save with `Ctrl-s`
 4. Switch to the **Source Control** git dialog (third icon on the left column, should have a blue notification)
-5. Fill the dialog text called **Message** with `Update web application to 1.1.0`
-6. Click on the blue **Commit** button to apply the changes. You will notice that while the editor suggests to synchronize changes (ie. a git push) to the remote repository, however this operation is not necessary for our workshop.
+5. If the Source Control panel does not report changes, make sure it does by clicking on the **refresh** button
+6. Fill the dialog text called **Message** with `Update web application to 1.1.0`
+7. Click on the blue **Commit** button to apply the changes. You will notice that while the editor suggests to synchronize changes (ie. a git push) to the remote repository, however this operation is not necessary for our workshop.
 
 
 ☑️ Task 3 - Locate and run the deploy Template

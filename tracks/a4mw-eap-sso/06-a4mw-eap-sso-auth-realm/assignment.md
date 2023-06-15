@@ -85,6 +85,7 @@ timelimit: 600
 
 Ok, we now have the playbooks in; let's configure the collection in the next challenge.
 
+
 ☑️ Task 3 - Configure the SSO realm client
 ===
 
@@ -119,8 +120,8 @@ realm_clients:
             realm: addressbook
       - username: user
         email: your.email@address.com
-        firstName: Guido
-        lastName: Grazioli
+        firstName: myFirstName
+        lastName: mySurname
         password: password
         client_roles:
           - client: addressbook
@@ -128,9 +129,9 @@ realm_clients:
             realm: addressbook
 ```
 
-   The above configuration will create an "addressbook" client in the "addressbook" realm, with two roles: `admin_role` and `user_role`. Then it will create two users: `administrator` with both roles, and `user`, beloging to the `user_role` only. The **addressbook** web application version 1.1.0, which we deployed, will authorize users that belong to the `user_role` role.
+   The above configuration will create an *addressbook* client in the *addressbook* realm, with two roles: `admin_role` and `user_role`. Then it will create two users: `administrator` with both roles, and `user`, beloging to the `user_role` only. The **addressbook** web application version 1.1.0, which we deployed, will authorize users that belong to the `user_role` role.
 
-4. Find the `password` for the users, and update with a password of your choice
+4. Find the `password`s for the users, and update with a password of your choice
 5. Update the `firstName` and `lastName` of the `user` user with your own
 6. Type **Ctrl-S** to save, or use the **File**/**Save** menu
 
@@ -161,10 +162,11 @@ Now that we have Single Sign-On deployed and the addressbook realm configured, w
 
 4.Type **Ctrl-S** to save, or use the **File**/**Save** menu
 
+
 ☑️ Task 5 - Commit changes
 ===
 
-1. Switch to the **Source Control** git dialog (third icon on the left column, should have a blue notification)
+1. Switch to the **Source Control** git dialog (third icon on the left column, should have a blue notification).
 2. Fill the dialog text called **Message** with `Add SSO REALM playbook`
 3. Click on the blue **Commit** button to apply the changes. You will notice that while the editor suggests to synchronize changes (ie. a git push) to the remote repository, however this operation is not necessary for our workshop.
 

@@ -95,6 +95,7 @@ in case you want to compare the configuration from the two different prespective
 ===
 Press the `Check` button below to go to the next challenge once you’ve completed the task.
 
+
 🐛 Encountered an issue?
 ====
 
