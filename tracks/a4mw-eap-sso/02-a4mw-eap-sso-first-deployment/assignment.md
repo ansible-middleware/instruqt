@@ -70,7 +70,7 @@ If not already, you can log in with the following credentials and then continue 
 ===
 
 1. On the side navigation bar, under the **Resources** section, click on **Templates**
-2. Click on the **sso-eap-deploy** template
+2. Click on the **eap-sso-deploy** template
 3. On the page that opens, click the **Launch** button
 4. The launch dialog opens, on a **Survey** asking for credentials (defaults are already set), click **Next**
 5. You are now presented with the Launch **Preview** page: click **Launch**. You will be redirected the executing job output page.
