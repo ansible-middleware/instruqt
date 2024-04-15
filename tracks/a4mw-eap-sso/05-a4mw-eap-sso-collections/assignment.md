@@ -153,7 +153,7 @@ We now have all configuration we need to pass to the **redhat.sso** collection f
 
 1. Switch to the **Automation controller** tab
 2. On the side navigation bar, under the **Resources** section, click on **Templates**
-3. Click on the **eap-sso-deploy** template
+3. Click on the **sso-eap-deploy** template
 4. On the page that opens, click the **Launch** button
 5. The launch dialog opens the **Survey**, asking for credentials (defaults are already set), click **Next**
 6. Click **Launch**; you will be redirected the executing job output page.
