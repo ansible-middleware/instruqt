@@ -39,12 +39,12 @@ description: |-
 icon: https://avatars.githubusercontent.com/u/63845529?s=280&v=4
 level: intermediate
 tags:
-- ansible
-- infrastructure
 - controller
 - automation
+- ansible
 - middleware
 - runtimes
+- infrastructure
 owner: redhat
 developers:
 - ggraziol@redhat.com
@@ -56,4 +56,6 @@ lab_config:
   overlay: false
   width: 33
   position: right
-checksum: "4208642998212063858"
+  feedback_recap_enabled: true
+  loadingMessages: true
+checksum: "17573183286271991167"

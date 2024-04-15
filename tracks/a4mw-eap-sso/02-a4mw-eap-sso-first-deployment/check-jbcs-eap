@@ -2,7 +2,7 @@
 set -e
 
 # EAP is patched
-grep 'WFLYSRV0025: JBoss EAP 7.4.11.GA' /opt/jboss_eap/jboss-eap-7.4/standalone/log/server.log
+grep 'WFLYSRV0025: JBoss EAP 7.4.1[0-9].GA' /opt/jboss_eap/jboss-eap-7.4/standalone/log/server.log
 
 # EAP attached to modcluster
 curl -s https://jbcs-eap/mcm/ -k -l | grep  'Node jbcs-eap'
